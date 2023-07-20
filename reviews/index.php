@@ -14,7 +14,8 @@ require('../config.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scam and Run</title>
 
-  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="../main.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -55,7 +56,7 @@ require('../config.php');
 
       $result = mysqli_query($link, $sql);
 
-      while ($row = $mysqli_fetch_assoc($result)) {
+      while ($row = $result -> fetch_assoc()) {
         echo "<div class='review'>";
         echo "<div class='user'>" . $row['users.username'] . "</div>";
         echo "<div class='rating'>" . $row['reviews.rating'] . "</div";
@@ -65,7 +66,7 @@ require('../config.php');
       ?>
     </div>
     <div class="add-review">
-      <a href=""><input type="submit" value="Dodaj recenzję"></a>
+      <a href="add_review.php"><input type="submit" class="add" value="Dodaj recenzję"></a>
     </div>
   </div>
 

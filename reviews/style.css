@@ -1,0 +1,26 @@
+.reviews {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.review {
+    border: 1px solid var(--main-color);
+    border-radius: 10px;
+}
+
+.add {
+    background: none;
+    color: var(--main-color);
+    font-size: var(--title-size);
+    text-align: center;
+    padding: 20px;
+    border: 1px solid var(--main-color);
+    border-radius: 25px;
+    transition: all .5s ease-in-out;
+}
+
+.add:hover {
+    background: var(--main-color);
+    color: var(--text-color);
+}
