@@ -1,8 +1,8 @@
 <?php
-    session_start();
+session_start();
 
-    $sesID = $_SESSION['id'];
-    require('../config.php');
+$sesID = $_SESSION['id'];
+require('../config.php');
 ?>
 
 <!DOCTYPE html>
@@ -48,10 +48,24 @@
 
   <div class="reviews">
     <div class="users-reviews">
+      <?php
+      $sql = "SELECT reviews.text, reviews.rating, users.username FROM reviews
+        INNER JOIN users ON reviews.user_id = users.id
+        ORDER BY reviews.date";
 
+      $result = mysqli_query($link, $sql);
+
+      while ($row = $mysqli_fetch_assoc($result)) {
+        echo "<div class='review'>";
+        echo "<div class='user'>" . $row['users.username'] . "</div>";
+        echo "<div class='rating'>" . $row['reviews.rating'] . "</div";
+        echo "<div class='comment'>" . $row['reviews.text'] . "</div>";
+        echo "</div>";
+      }
+      ?>
     </div>
     <div class="add-review">
-        <a href=""><input type="submit" value="Dodaj recenzję"></a>
+      <a href=""><input type="submit" value="Dodaj recenzję"></a>
     </div>
   </div>
 
