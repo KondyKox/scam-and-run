@@ -1,0 +1,114 @@
+/*********************************** IDs ************************************/
+
+#login {
+    /* position: relative;
+    top: 55%;
+    left: 50%; */
+    padding: 4%;
+    max-width: 60%;
+    /* transform: translate(-50%, -50%); */
+    border: 1px solid var(--main-color);
+    border-radius: 10px;
+}
+
+#login h2 {
+    text-align: center;
+    padding: 0 0 3% 0;
+    border-bottom: 1px solid var(--main-color);
+    font-size: 2em;
+}
+
+#login form {
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+/******************************* Classes ********************************/
+
+.extra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.txtField {
+    position: relative;
+    border-bottom: 2px solid var(--main-color);
+    margin: 30px 0;
+}
+
+.txtField input {
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--text-color);
+}
+
+.txtField span::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--main-color);
+    transition: .5s;
+}
+
+.txtField label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    background: none;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.txtField input:focus ~ label,
+.txtField input:valid ~ label {
+    top: -2px;
+    color: var(--main-color);
+}
+
+.txtField input:focus ~ span::before,
+.txtField input:valid ~ span::before {
+    width: 100%;
+}
+
+.registration {
+    border-radius: 10px;
+    transition: all .5s ease-in-out;
+}
+
+.registration input {
+    color: var(--main-color);
+}
+
+.registration:hover {
+    color: var(--text-color);
+    background-color: var(--main-color);
+}
+
+.registration:hover input {
+    color: var(--text-color);
+}
+
+/*********************************** Tags ************************************/
+
+input[type="submit"] {
+    width: 100%;
+    height: 40px;
+    margin-top: 5%;
+    font-size: 18px;
+}
+
+p a {
+    color: var(--main-color);
+}
