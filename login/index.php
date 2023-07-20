@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <li>
                 <?php
                 if (!isset($_SESSION["username"])) {
-                    echo '<a href="../login">Logowanie</a>';
+                    echo '<a href="../registration">Rejestracja</a>';
                 } else
                     echo '<a href="../logout">Wyloguj</a>';
                 ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// $sesID = $_SESSION['id'];
+$sesID = $_SESSION['id'];
 require("config.php");
 ?>
 

@@ -1,12 +1,12 @@
-<?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "scam_and_run";
+<?php 
+    define('DB_SERWER', 'localhost');
+    define('DB_USERNAME', 'root');
+    define('DB_PASSWORD', '');
+    define('DB_NAME', 'scam_and_run');
 
-    $conn = mysqli_connect($servername, $username, $password, $database);
+    $link = mysqli_connect(DB_SERWER, DB_USERNAME, DB_PASSWORD, DB_NAME,);
 
-    if (!$conn) {
-        die("Connection failed");
+    if ($link === FALSE) {
+        die("ERROR: Could not connect. " . mysqli_connect_error());
     }
 ?>
