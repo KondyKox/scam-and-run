@@ -101,15 +101,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firma</title>
+    <title>Scam and Run</title>
 
     <link rel="stylesheet" href="../main.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../login.css" />
 </head>
 
 <body>
     <nav class="navbar" id="navbar">
-        <div class="logo">Firma</div>
+        <div class="logo">Scam and Run</div>
 
         <ul class="nav-links">
             <li><a href="../index.php">Strona główna</a></li>

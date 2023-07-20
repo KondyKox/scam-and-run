@@ -12,14 +12,14 @@ require("config.php");
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Firma</title>
+  <title>Scam and Run</title>
 
   <link rel="stylesheet" href="main.css" />
 </head>
 
 <body>
   <nav class="navbar" id="navbar">
-    <div class="logo">Firma</div>
+    <div class="logo"><a href="index.php">Scam and Run</a></div>
 
     <ul class="nav-links">
       <li><a href="index.php" class="active">Strona główna</a></li>
