@@ -62,7 +62,7 @@
   <form action="add_review.php" method="post" id="review-form">
     <div>
         <label for="rating">Rating:</label>
-        <input type="number" id="rating" required>
+        <input type="number" id="rating" min="1" max="5" required>
     </div>
     <div>
         <label for="review">Review</label>

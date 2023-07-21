@@ -58,9 +58,9 @@ require('../config.php');
 
       while ($row = $result -> fetch_assoc()) {
         echo "<div class='review'>";
-        echo "<div class='user'>" . $row['users.username'] . "</div>";
-        echo "<div class='rating'>" . $row['reviews.rating'] . "</div";
-        echo "<div class='comment'>" . $row['reviews.text'] . "</div>";
+        echo "<div class='user'>" . $row['username'] . "</div>";
+        echo "<div class='rating'>" . $row['rating'] . "</div";
+        echo "<div class='comment'>" . $row['text'] . "</div>";
         echo "</div>";
       }
       ?>

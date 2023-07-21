@@ -29,6 +29,7 @@
     align-items: center;
     padding: 30px 20px;
     z-index: 1;
+    position: sticky;
   }
   
   .logo {
