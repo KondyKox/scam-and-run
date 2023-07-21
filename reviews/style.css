@@ -54,4 +54,5 @@
     background: var(--main-color);
     color: var(--text-color);
     cursor: pointer;
+    scale: 1.2;
 }

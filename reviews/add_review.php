@@ -68,7 +68,7 @@
         <label for="review">Review</label>
         <textarea id="review" required></textarea>
     </div>
-    <input type="submit" value="Dodaj recenzję">
+    <input type="submit" class="add" value="Dodaj recenzję">
   </form>
 
   <script src="../navbar.js"></script>

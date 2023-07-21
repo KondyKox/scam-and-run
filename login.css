@@ -85,20 +85,26 @@
 .registration {
     border-radius: 10px;
     transition: all .5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .registration input {
     color: var(--main-color);
+    transition: all .5s ease-in-out;
 }
 
 .registration:hover {
     color: var(--text-color);
     background-color: var(--main-color);
-    cursor: pointer;
 }
 
 .registration:hover input {
     color: var(--text-color);
+    scale: 1.2;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 /*********************************** Tags ************************************/

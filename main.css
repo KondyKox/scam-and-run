@@ -1,120 +1,128 @@
+/* Variables */
+:root {
+  --bg-color: #222327;
+  --text-color: #fff;
+  --main-color: #29fd53;
+
+  --text-size: 1.25rem;
+  --title-size: 2rem;
+}
+
+/* ************************************************ */
+
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    text-decoration: none;
-    list-style: none;
-  }
-  
-  :root {
-    --bg-color: #222327;
-    --text-color: #fff;
-    --main-color: #29fd53;
-  
-    --text-size: 1.25rem;
-    --title-size: 2rem;
-  }
-  
-  body {
-    min-height: 100vh;
-    background: var(--bg-color);
-    color: var(--text-color);
-  }
-  
-  nav {
-    color: var(--text-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 20px;
-    z-index: 1;
-    position: sticky;
-  }
-  
-  .logo {
-    font-size: var(--title-size);
-    font-weight: 700;
-  }
-  
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+nav {
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 20px;
+  z-index: 1;
+  position: sticky;
+}
+
+/* ************************************************ */
+
+.logo {
+  font-size: var(--title-size);
+  font-weight: 700;
+}
+
+.logo a {
+  color: var(--main-color);
+  transition: all .5s ease-in-out;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: var(--text-size);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+  color: var(--main-color);
+}
+
+.nav-links .active {
+  color: var(--main-color);
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-color);
+  margin: 5px;
+}
+
+/* ************************************************ */
+
+@media screen and (max-width: 768px) {
   .nav-links {
     display: flex;
-    list-style: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: -100%;
+    width: 270px;
+    /* height: 29vh; */
+    background-color: var(--main-color);
+    padding: 10px;
+    justify-content: flex-start;
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out;
   }
-  
+
   .nav-links li {
-    margin: 0 15px;
+    margin: 15px 0;
+    display: block;
+    padding: 0 25px;
+    transition: all 0.5s ease-in-out;
   }
-  
+
   .nav-links a {
     text-decoration: none;
     color: var(--text-color);
-    font-size: var(--text-size);
-    transition: all 0.3s ease-in-out;
   }
-  
+
   .nav-links a:hover {
-    color: var(--main-color);
+    color: var(--text-color);
+    transform: translateY(5px);
   }
-  
-  .nav-links a.active {
-    color: var(--main-color);
-  }
-  
+
   .burger {
-    display: none;
-    cursor: pointer;
+    display: block;
   }
-  
-  .burger div {
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-color);
-    margin: 5px;
+
+  .nav-active {
+    right: 2%;
   }
-  
-  @media screen and (max-width: 768px) {
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 60px;
-      right: -100%;
-      width: 270px;
-      /* height: 29vh; */
-      background-color: var(--main-color);
-      padding: 10px;
-      justify-content: flex-start;
-      border-radius: 10px;
-      transition: all .5s ease-in-out;
-    }
-  
-    .nav-links li {
-      margin: 15px 0;
-      display: block;
-      padding: 0 25px;
-      transition: all .5s ease-in-out;
-    }
-  
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-color);
-    }
-  
-    .nav-links a:hover {
-      color: var(--text-color);
-      transform: translateY(5px);
-    }
-    
-    .nav-links a.active {
-      color: var(--text-color);
-    }
-  
-    .burger {
-      display: block;
-    }
-  
-    .nav-active {
-      right: 2%;
-    }
-  }
+}
