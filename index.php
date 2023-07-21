@@ -24,8 +24,8 @@ require("config.php");
     <ul class="nav-links">
       <li><a href="index.php" class="nav-link">Strona główna</a></li>
       <li><a href="./reviews" class="nav-link">Opinie</a></li>
-      <li><a href="./contact" class="nav-link">>Kontakt</a></li>
-      <li><a href="./about" class="nav-link">>O nas</a></li>
+      <li><a href="./contact" class="nav-link">Kontakt</a></li>
+      <li><a href="./about" class="nav-link">O nas</a></li>
       <li></li>
 
       <li>
