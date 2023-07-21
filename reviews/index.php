@@ -23,10 +23,10 @@ require('../config.php');
     <div class="logo"><a href="../index.php">Scam and Run</a></div>
 
     <ul class="nav-links">
-      <li><a href="../index.php">Strona główna</a></li>
-      <li><a href="index.php">Opinie</a></li>
-      <li><a href="../contact">Kontakt</a></li>
-      <li><a href="../about">O nas</a></li>
+      <li><a href="../index.php" class="nav-link">>Strona główna</a></li>
+      <li><a href="index.php" class="nav-link">>Opinie</a></li>
+      <li><a href="../contact" class="nav-link">>Kontakt</a></li>
+      <li><a href="../about" class="nav-link">>O nas</a></li>
       <li></li>
 
       <li>
