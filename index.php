@@ -49,7 +49,7 @@ require("config.php");
 
   <div class="container">
     <div class="left">
-      <img src="./scr/star.png" alt="Logo">
+      <img src="./src/star.png" alt="Logo">
     </div>
     <div class="header">
       <h1>Scam and Run</h1>
