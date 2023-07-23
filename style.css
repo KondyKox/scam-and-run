@@ -31,6 +31,42 @@
 
 .products {
     clear: both;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product {
+    border: 3px solid var(--main-color);
+    border-radius: 10px;
+    max-width: 20em;
+    height: auto;
+    padding: 10px;
+    margin: 5px;
+    transition: all .5s ease-in-out;
+    display: flex;
+}
+
+.product:hover {
+    scale: 1.2;
+    z-index: 1;
+    background: var(--main-color);
+}
+
+.product:hover .description {
+    color: var(--text-color);
+}
+
+.product img {
+    width: 50%;
+    height: auto;
+}
+
+.product .description {
+    color: var(--main-color);
+    justify-content: right;
+    align-items: flex-end;
+    padding: 15px;
 }
 
 /* Change display to none of logo image */
