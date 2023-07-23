@@ -1,11 +1,18 @@
 // Toggle nav menu on mobile
 function toggleMenu() {
-  let navList = document.querySelector(".nav-links");
-  let menuBtn = document.querySelector(".burger");
+  // let navList = document.querySelector(".nav-links");
+  // let menuBtn = document.querySelector(".burger");
 
-  menuBtn.addEventListener("click", () => {
-    navList.classList.toggle("nav-active");
-  });
+  // menuBtn.addEventListener("click", () => {
+  //   navList.classList.toggle("nav-active");
+  // });
+
+  const toggleButton = document.querySelector('.toggle-button');
+  const navbarLinks = document.querySelectorAll('.nav-container');
+
+  toggleButton.addEventListener("click", () => {
+    navbarLinks.classList.toggle("active")
+  })
 }
 
 // Change color of active link in navbar
