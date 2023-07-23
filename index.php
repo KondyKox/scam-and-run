@@ -14,38 +14,47 @@ require("config.php");
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scam and Run</title>
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
   <link rel="stylesheet" href="main.css" />
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <nav class="navbar" id="navbar">
-    <div class="logo"><a href="index.php">Scam and Run</a></div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.php">Scam and Run</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.php">Strona główna</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./reviews">Opinie</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./contact">Kontakt</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="./about">O nas</a>
+        </li>
 
-    <ul class="nav-links">
-      <li><a href="index.php" class="nav-link">Strona główna</a></li>
-      <li><a href="./reviews" class="nav-link">Opinie</a></li>
-      <li><a href="./contact" class="nav-link">Kontakt</a></li>
-      <li><a href="./about" class="nav-link">O nas</a></li>
-      <li></li>
-
-      <li>
+        <li class="nav-item">
         <?php
         if (!isset($_SESSION["username"])) {
-          echo '<a href="./login">Logowanie </a>';
-          echo '<a href="./registration">Rejestracja</a>';
+          echo '<a class="nav-link" href="./login">Logowanie </a>';
+          echo '<a class="nav-link" href="./registration">Rejestracja</a>';
         } else
-          echo '<a href="./logout">Wyloguj</a>';
+          echo '<a class="nav-link" href="./logout">Wyloguj</a>';
         ?>
       </li>
-    </ul>
-
-    <div class="burger">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <div class="container">
     <div class="left">
@@ -87,7 +96,8 @@ require("config.php");
     </div>
   </div>
 
-  <script src="navbar.js"></script>
+  <!-- <script src="navbar.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

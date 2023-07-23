@@ -44,6 +44,7 @@
     padding: 10px;
     margin: 5px;
     transition: all .5s ease-in-out;
+    display: flex;
 }
 
 .product:hover {
@@ -65,6 +66,7 @@
     color: var(--main-color);
     justify-content: right;
     align-items: flex-end;
+    padding: 15px;
 }
 
 /* Change display to none of logo image */
