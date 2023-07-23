@@ -15,6 +15,7 @@ require("config.php");
   <title>Scam and Run</title>
 
   <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -45,6 +46,19 @@ require("config.php");
       <div class="line3"></div>
     </div>
   </nav>
+
+  <div class="container">
+    <div class="left">
+      <img src="./scr/star.png" alt="Logo">
+    </div>
+    <div class="header">
+      <h1>Scam and Run</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="products"></div>
+  </div>
 
   <script src="navbar.js"></script>
 </body>
