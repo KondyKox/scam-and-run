@@ -7,12 +7,12 @@ function toggleMenu() {
   //   navList.classList.toggle("nav-active");
   // });
 
-  const toggleButton = document.querySelector('.toggle-button');
-  const navbarLinks = document.querySelectorAll('.nav-container');
+  const toggleButton = document.getElementsByClassName("toggle-button")[0];
+  const navbarLinks = document.getElementsByClassName("nav-container")[0];
 
   toggleButton.addEventListener("click", () => {
-    navbarLinks.classList.toggle("active")
-  })
+    navbarLinks.classList.toggle("active");
+  });
 }
 
 // Change color of active link in navbar
