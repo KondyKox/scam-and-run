@@ -1,20 +1,20 @@
 <?php
-    session_start();
+session_start();
 
-    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-        header("location: ../login");
-        exit;
-    }
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+  header("location: ../login");
+  exit;
+}
 
-    $sesID = $_SESSION['id'];
-    require("../config.php");
+$sesID = $_SESSION['id'];
+require("../config.php");
 
-    $review = $_POST['#review'];
-    $rating = $_POST['#rating'];
+$review = $_POST['#review'];
+$rating = $_POST['#rating'];
 
-    $addReview = "INSERT INTO reviews VALUES (, $sesID, $review, $rating);";
+$addReview = "INSERT INTO reviews VALUES (, $sesID, $review, $rating);";
 
-    mysqli_query($link, $addReview);
+mysqli_query($link, $addReview);
 ?>
 
 <!DOCTYPE html>
@@ -32,41 +32,40 @@
 <body>
   <nav class="navbar" id="navbar">
     <div class="logo"><a href="../index.php">Scam and Run</a></div>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="../index.php" class="nav-link">Strona główna</a></li>
+        <li><a href="./index.php" class="nav-link">Opinie</a></li>
+        <li><a href="../contact" class="nav-link">Kontakt</a></li>
+        <li><a href="../about" class="nav-link">O nas</a></li>
+        <li></li>
 
-    <ul class="nav-links">
-      <li><a href="../index.php" class="nav-link">Strona główna</a></li>
-      <li><a href="index.php" class="nav-link">Opinie</a></li>
-      <li><a href="../contact" class="nav-link">Kontakt</a></li>
-      <li><a href="../about" class="nav-link">O nas</a></li>
-      <li></li>
-
-      <li>
         <?php
         if (!isset($_SESSION["username"])) {
-          echo '<a href="../login">Logowanie </a>';
-          echo '<a href="../registration">Rejestracja</a>';
+          echo '<li><a class="nav-link" href="../login">Logowanie </a></li>';
+          echo '<li><a class="nav-link" href="../registration">Rejestracja</a></li>';
         } else
-          echo '<a href="../logout">Wyloguj</a>';
+          echo '<li><a class="nav-link" href="../logout">Wyloguj</a></li>';
         ?>
-      </li>
-    </ul>
+      </ul>
+    </div>
 
-    <div class="burger">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
+    <div class="toggle-button">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
     </div>
   </nav>
 
   <h2>Dodaj recenzję</h2>
   <form action="add_review.php" method="post" id="review-form">
     <div>
-        <label for="rating">Rating:</label>
-        <input type="number" id="rating" min="1" max="5" required>
+      <label for="rating">Rating:</label>
+      <input type="number" id="rating" min="1" max="5" required>
     </div>
     <div>
-        <label for="review">Review</label>
-        <textarea id="review" required></textarea>
+      <label for="review">Review</label>
+      <textarea id="review" required></textarea>
     </div>
     <input type="submit" class="add" value="Dodaj recenzję">
   </form>

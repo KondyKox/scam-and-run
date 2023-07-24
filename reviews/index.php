@@ -21,29 +21,28 @@ require('../config.php');
 <body>
   <nav class="navbar" id="navbar">
     <div class="logo"><a href="../index.php">Scam and Run</a></div>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="../index.php" class="nav-link">Strona główna</a></li>
+        <li><a href="./index.php" class="nav-link">Opinie</a></li>
+        <li><a href="../contact" class="nav-link">Kontakt</a></li>
+        <li><a href="../about" class="nav-link">O nas</a></li>
+        <li></li>
 
-    <ul class="nav-links">
-      <li><a href="../index.php" class="nav-link">Strona główna</a></li>
-      <li><a href="index.php" class="nav-link">Opinie</a></li>
-      <li><a href="../contact" class="nav-link">Kontakt</a></li>
-      <li><a href="../about" class="nav-link">O nas</a></li>
-      <li></li>
-
-      <li>
         <?php
         if (!isset($_SESSION["username"])) {
-          echo '<a href="../login">Logowanie </a>';
-          echo '<a href="../registration">Rejestracja</a>';
+          echo '<li><a class="nav-link" href="../login">Logowanie </a></li>';
+          echo '<li><a class="nav-link" href="../registration">Rejestracja</a></li>';
         } else
-          echo '<a href="../logout">Wyloguj</a>';
+          echo '<li><a class="nav-link" href="../logout">Wyloguj</a></li>';
         ?>
-      </li>
-    </ul>
+      </ul>
+    </div>
 
-    <div class="burger">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
+    <div class="toggle-button">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
     </div>
   </nav>
 
@@ -56,7 +55,7 @@ require('../config.php');
 
       $result = mysqli_query($link, $sql);
 
-      while ($row = $result -> fetch_assoc()) {
+      while ($row = $result->fetch_assoc()) {
         echo "<div class='review'>";
         echo "<div class='user'>" . $row['username'] . "</div>";
         echo "<div class='rating'>" . $row['rating'] . "</div";

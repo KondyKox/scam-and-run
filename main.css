@@ -1,6 +1,7 @@
 /* Variables */
 :root {
   --bg-color: #222327;
+  --nav-color: #101013;
   --text-color: #fff;
   --main-color: #29fd53;
 
@@ -28,6 +29,7 @@ body {
 
 nav {
   color: var(--text-color);
+  background: var(--nav-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -68,10 +70,6 @@ nav {
   color: var(--main-color);
 }
 
-.nav-links .active {
-  color: var(--main-color);
-}
-
 .toggle-button {
   position: absolute;
   top: .75rem;
@@ -106,18 +104,11 @@ nav {
   }
 
   .nav-links {
-    /* display: flex; */
     flex-direction: column;
-    /* position: absolute; */
     width: 100%;
-    /* top: 60px; */
-    /* right: -100%; */
     width: 100%;
-    /* height: 29vh; */
-    background-color: var(--main-color);
+    background-color: var(--nav-color);
     padding: 10px;
-    /* justify-content: flex-start; */
-    /* border-radius: 10px; */
     transition: all 0.5s ease-in-out;
   }
 
@@ -134,20 +125,11 @@ nav {
     color: var(--text-color);
   }
 
-  .nav-link:hover {
-    color: var(--text-color);
-    transform: translateY(5px);
-  }
-
   .toggle-button {
-    display: flex;
+    display: block;
   }
 
-  /* .nav-active {
-    right: 2%;
-  } */
-
-  .nav-container .active {
+  .active {
     display: flex;
   }
 }

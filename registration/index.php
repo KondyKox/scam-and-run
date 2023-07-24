@@ -110,28 +110,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <nav class="navbar" id="navbar">
         <div class="logo"><a href="../index.php">Scam and Run</a></div>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="../index.php" class="nav-link">Strona główna</a></li>
+                <li><a href="../index.php" class="nav-link">Opinie</a></li>
+                <li><a href="../contact" class="nav-link">Kontakt</a></li>
+                <li><a href="../about" class="nav-link">O nas</a></li>
+                <li></li>
 
-        <ul class="nav-links">
-            <li><a href="../index.php" class="nav-link">Strona główna</a></li>
-            <li><a href="../reviews" class="nav-link">Opinie</a></li>
-            <li><a href="../contact" class="nav-link">Kontakt</a></li>
-            <li><a href="../about" class="nav-link">O nas</a></li>
-            <li></li>
-
-            <li>
                 <?php
                 if (!isset($_SESSION["username"])) {
-                    echo '<a href="../login">Logowanie</a>';
+                    echo '<li><a class="nav-link" href="../login">Logowanie </a></li>';
+                    echo '<li><a class="nav-link" href="./registration">Rejestracja</a></li>';
                 } else
-                    echo '<a href="../logout">Wyloguj</a>';
+                    echo '<li><a class="nav-link" href="../logout">Wyloguj</a></li>';
                 ?>
-            </li>
-        </ul>
+            </ul>
+        </div>
 
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
+        <div class="toggle-button">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
         </div>
     </nav>
 
@@ -140,27 +140,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="index.php" method="post">
                 <h2>REJESTRACJA</h2>
                 <div class="txtField">
-                    <input type="text" name="username" required
-                        class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>"
-                        value="<?php echo $username; ?>">
+                    <input type="text" name="username" required class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                     <span class="invalid-feedback">
                         <?php echo $username_err; ?>
                     </span>
                     <label>Login</label>
                 </div>
                 <div class="txtField">
-                    <input type="password" name="password" required
-                        class="<?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>"
-                        value="<?php echo $password; ?>">
+                    <input type="password" name="password" required class="<?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
                     <span class="invalid-feedback">
                         <?php echo $password_err; ?>
                     </span>
                     <label>Hasło</label>
                 </div>
                 <div class="txtField">
-                    <input type="password" name="confirm_password" required
-                        class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>"
-                        value="<?php echo $confirm_password; ?>">
+                    <input type="password" name="confirm_password" required class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
                     <span class="invalid-feedback">
                         <?php echo $confirm_password_err; ?>
                     </span>
