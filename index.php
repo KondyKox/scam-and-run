@@ -48,43 +48,51 @@ require("config.php");
 
   <div class="container">
     <div class="left">
-      <img src="./src/star.png" alt="Logo">
+      <img src="./src/logo.png" alt="Logo">
     </div>
     <div class="header">
-      <h1>Scam and Run</h1>
+      <h1>Scam & Run</h1>
     </div>
   </div>
 
   <div class="products">
     <h2>Nasze produkty:</h2>
     <div class="product">
+      <a href="#">
+        <div class="img"><img src="./src/star.png" alt=""></div>
+        <div class="description">
+          <h3>tytul</h3>
+          <p>jakis telksr knasfkjashfjka</p>
+      </a>
+    </div>
+  </div>
+  <div class="product">
+    <a href="#">
       <img src="./src/star.png" alt="">
       <div class="description">
         <h3>tytul</h3>
         <p>jakis telksr</p>
-      </div>
-    </div>
-    <div class="product">
+    </a>
+  </div>
+  </div>
+  <div class="product">
+    <a href="#">
       <img src="./src/star.png" alt="">
       <div class="description">
         <h3>tytul</h3>
         <p>jakis telksr</p>
-      </div>
-    </div>
-    <div class="product">
+    </a>
+  </div>
+  </div>
+  <div class="product">
+    <a href="#">
       <img src="./src/star.png" alt="">
       <div class="description">
         <h3>tytul</h3>
         <p>jakis telksr</p>
-      </div>
-    </div>
-    <div class="product">
-      <img src="./src/star.png" alt="">
-      <div class="description">
-        <h3>tytul</h3>
-        <p>jakis telksr</p>
-      </div>
-    </div>
+    </a>
+  </div>
+  </div>
   </div>
 
   <script src="navbar.js"></script>

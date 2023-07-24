@@ -11,7 +11,7 @@
 }
 
 .left img {
-    max-width: 15em;
+    max-width: 25em;
     height: auto;
     padding: 10px;
     margin: 1rem;
@@ -36,11 +36,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
 }
 
 .products h2 {
-    padding: 20px;
-    font-size: var(--header-size);
+    display: none;
 }
 
 .product {
@@ -54,13 +54,18 @@
     display: flex;
 }
 
+.product a {
+    text-decoration: none;
+    color: var(--main-color);
+}
+
 .product:hover {
     scale: 1.2;
     z-index: 1;
     background: var(--main-color);
 }
 
-.product:hover .description {
+.product:hover  a{
     color: var(--text-color);
 }
 
@@ -74,20 +79,34 @@
     justify-content: right;
     align-items: flex-end;
     padding: 15px;
+    /* max-width: 50%; */
 }
 
 /* Change display to none of logo image */
 @media screen and (max-width: 768px) {
     .left {
-        display: none;
+        float: none;
+        width: 100%;
+        height: auto;
     }
 
     .header {
-        float: none;
+        display: none;
     }
 
     .products {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .products h2 {
+        padding: 20px;
+        font-size: var(--header-size);
+    }
+
+    .product {
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
     }
 }
