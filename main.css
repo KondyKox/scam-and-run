@@ -70,6 +70,16 @@ nav {
   color: var(--main-color);
 }
 
+.nav-link img {
+  width: 50px;
+  height: auto;
+  transition: all .5s ease-in-out;
+}
+
+.nav-link img:hover {
+  scale: 1.2;
+}
+
 .toggle-button {
   position: absolute;
   top: .75rem;
