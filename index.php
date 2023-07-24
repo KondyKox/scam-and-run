@@ -60,13 +60,13 @@ require("config.php");
   <div class="products">
     <h2>Nasze produkty:</h2>
     <?php
-    $sql = "SELECT product_name, price, photo, description FROM products;";
+    $sql = "SELECT id, product_name, price, photo, description FROM products;";
 
     $product = mysqli_query($link, $sql);
 
     while ($row = mysqli_fetch_array($product)) {
       echo "<div class='product'>";
-      echo "<a href='#'>";
+      echo "<a href='./products?id=" . $row['id'] . "'>";
       echo "<div class='img'><img src='" . $row['photo'] . "'></div>";
       echo "<div class='description'>";
       echo "<h3>" . $row['product_name'] . "</h3>";
