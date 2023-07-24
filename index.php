@@ -56,6 +56,7 @@ require("config.php");
   </div>
 
   <div class="products">
+    <h2>Nasze produkty:</h2>
     <div class="product">
       <img src="./src/star.png" alt="">
       <div class="description">
