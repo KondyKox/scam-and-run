@@ -29,7 +29,14 @@ require("../config.php");
         <li><a href="../contact" class="nav-link">Kontakt</a></li>
         <li><a href="../about" class="nav-link">O nas</a></li>
         <li></li>
-        <li><a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a></li>
+        <li>
+          <?php
+          if (!isset($_SESSION["username"])) {
+            echo '<a href="./cart" class="nav-link"><img src="./src/cart.png" alt="Twój koszyk"></a>';
+          } else
+            echo '<a href="./login" class="nav-link"><img src="./src/cart.png" alt="Twój koszyk"></a>';
+          ?>
+        </li>
         <li></li>
 
         <?php
@@ -51,22 +58,22 @@ require("../config.php");
 
   <div class="container">
     <?php
-        $productID = $_GET['id'];
+    $productID = $_GET['id'];
 
-        $sql = "SELECT id, product_name, price, photo, description FROM products WHERE id = " . $productID . ";";
+    $sql = "SELECT id, product_name, price, photo, description FROM products WHERE id = " . $productID . ";";
 
-        $product = mysqli_query($link, $sql);
+    $product = mysqli_query($link, $sql);
 
-        while ($row = mysqli_fetch_array($product)) {
-            echo "<div class='img'><img src='." . $row['photo'] . "'></div>";
-            echo "<div class='product-container'>";
-            echo "<div class='description'>";
-            echo "<h2>" . $row['product_name'] . "</h2>";
-            echo "<p>" . $row['description'] . "</p>";
-            echo "</div>";
-            echo "<div class='buyBtn'><a href='../cart?id='" . $row['id'] . "'><button>Dodaj do koszyka. Cena: " . $row['price'] . " PLN</button></a></div>";
-            echo "</div>";
-        }
+    while ($row = mysqli_fetch_array($product)) {
+      echo "<div class='img'><img src='." . $row['photo'] . "'></div>";
+      echo "<div class='product-container'>";
+      echo "<div class='description'>";
+      echo "<h2>" . $row['product_name'] . "</h2>";
+      echo "<p>" . $row['description'] . "</p>";
+      echo "</div>";
+      echo "<div class='buyBtn'><a href='../cart?id='" . $row['id'] . "'><button>Dodaj do koszyka. Cena: " . $row['price'] . " PLN</button></a></div>";
+      echo "</div>";
+    }
     ?>
   </div>
 
