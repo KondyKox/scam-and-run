@@ -3,6 +3,32 @@ session_start();
 
 $sesID = $_SESSION['id'];
 require("../config.php");
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (isset($_POST['productID'])) {
+    // Pobierz productID z żądania AJAX
+    $productID = $_POST['productID'];
+
+    $getPrice = "SELECT price FROM products WHERE id = $productID;";
+    $result = mysqli_query($link, $getPrice);
+
+    $row = mysqli_fetch_assoc($result);
+    $productPrice = $row['price'];
+
+    // Wykonaj zapytanie do dodania danych do tabeli "cart"
+    $addToCart = "INSERT INTO cart (user_id, product_id, product_price) VALUES ($sesID, $productID, $productPrice)";
+
+    if ($mysqli->query($addToCart) === TRUE) {
+      echo "Produkt został dodany do koszyka.";
+    } else {
+      echo "Błąd dodawania produktu do koszyka: " . $mysqli->error;
+    }
+  } else {
+    echo "Błąd: Nieprawidłowe dane.";
+  }
+} else {
+  echo "Błąd: Nieprawidłowy typ żądania.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +86,7 @@ require("../config.php");
     <?php
     $productID = $_GET['id'];
 
-    $sql = "SELECT id, product_name, price, photo, description FROM products WHERE id = " . $productID . ";";
+    $sql = "SELECT id, product_name, price, photo, description FROM products WHERE id = $productID;";
 
     $product = mysqli_query($link, $sql);
 
@@ -71,13 +97,16 @@ require("../config.php");
       echo "<h2>" . $row['product_name'] . "</h2>";
       echo "<p>" . $row['description'] . "</p>";
       echo "</div>";
-      echo "<div class='buyBtn'><a href='../cart?id='" . $row['id'] . "'><button>Dodaj do koszyka. Cena: " . $row['price'] . " PLN</button></a></div>";
+      // echo "<div class='buyBtn'><form action='index.php' method='post'><input type='submit' value='Dodaj do koszyka. Cena: " . $row['price'] . " PLN' /></form></div>";
+      echo "<div class='buyBtn'><form method='post'><button type='button' id='addToCartBtn'>Dodaj do koszyka. Cena: " . $row['price'] . " PLN</button></form></div>";
       echo "</div>";
     }
+
     ?>
   </div>
 
   <script src="../navbar.js"></script>
+  <script src="./add_to_cart.js"></script>
 </body>
 
 </html>
