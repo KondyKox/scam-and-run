@@ -43,9 +43,9 @@ mysqli_query($link, $addReview);
         <li>
           <?php
           if (!isset($_SESSION["username"])) {
-            echo '<a href="./cart" class="nav-link"><img src="./src/cart.png" alt="Twój koszyk"></a>';
+            echo '<a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
           } else
-            echo '<a href="./login" class="nav-link"><img src="./src/cart.png" alt="Twój koszyk"></a>';
+            echo '<a href="../login" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
           ?>
         </li>
         <li></li>
