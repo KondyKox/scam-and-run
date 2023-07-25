@@ -28,7 +28,7 @@ require('../config.php');
         <li><a href="../contact" class="nav-link">Kontakt</a></li>
         <li><a href="../about" class="nav-link">O nas</a></li>
         <li></li>
-        <li><a href="../basket" class="nav-link"><img src="./src/koszyk.png" alt="Twój koszyk"></a></li>
+        <li><a href="../basket" class="nav-link"><img src="../src/koszyk.png" alt="Twój koszyk"></a></li>
         <li></li>
 
         <?php
@@ -49,6 +49,9 @@ require('../config.php');
   </nav>
 
   <div class="reviews">
+  <div class="add-review">
+      <a href="add_review.php"><input type="submit" class="add" value="Dodaj recenzję"></a>
+    </div>
     <div class="users-reviews">
       <?php
       $sql = "SELECT reviews.text, reviews.rating, users.username FROM reviews
@@ -60,14 +63,18 @@ require('../config.php');
       while ($row = $result->fetch_assoc()) {
         echo "<div class='review'>";
         echo "<div class='user'>" . $row['username'] . "</div>";
-        echo "<div class='rating'>" . $row['rating'] . "</div";
+        // echo "<div class='rating'>" . $row['rating'] . "</div>";
+        echo "<div class='rating'>";
+
+        for ($i = 1; $i < $row['rating']; $i++) {
+          echo "<img src='../src/star.png'>";
+        }
+
+        echo "</div>";
         echo "<div class='comment'>" . $row['text'] . "</div>";
         echo "</div>";
       }
       ?>
-    </div>
-    <div class="add-review">
-      <a href="add_review.php"><input type="submit" class="add" value="Dodaj recenzję"></a>
     </div>
   </div>
 
