@@ -29,7 +29,7 @@ require("../config.php");
         <li><a href="../contact" class="nav-link">Kontakt</a></li>
         <li><a href="../about" class="nav-link">O nas</a></li>
         <li></li>
-        <li><a href="../basket" class="nav-link"><img src="../src/koszyk.png" alt="Twój koszyk"></a></li>
+        <li><a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a></li>
         <li></li>
 
         <?php
@@ -64,7 +64,7 @@ require("../config.php");
             echo "<h2>" . $row['product_name'] . "</h2>";
             echo "<p>" . $row['description'] . "</p>";
             echo "</div>";
-            echo "<div class='buyBtn'><a href='../basket?id='" . $row['id'] . "'><button>Kup teraz: " . $row['price'] . " PLN</button></a></div>";
+            echo "<div class='buyBtn'><a href='../cart?id='" . $row['id'] . "'><button>Dodaj do koszyka. Cena: " . $row['price'] . " PLN</button></a></div>";
             echo "</div>";
         }
     ?>

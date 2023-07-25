@@ -29,7 +29,7 @@ require('../config.php');
         <li><a href="../contact" class="nav-link">Kontakt</a></li>
         <li><a href="../about" class="nav-link">O nas</a></li>
         <li></li>
-        <li><a href="../basket" class="nav-link"><img src="../src/koszyk.png" alt="Twój koszyk"></a></li>
+        <li><a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a></li>
         <li></li>
 
         <?php
