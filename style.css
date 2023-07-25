@@ -47,7 +47,7 @@
     border: 3px solid var(--main-color);
     border-radius: 10px;
     max-width: 20em;
-    height: auto;
+    height: 15em;
     padding: 10px;
     margin: 5px;
     transition: all .5s ease-in-out;
@@ -69,17 +69,38 @@
     color: var(--text-color);
 }
 
-.product img {
-    width: 50%;
+.img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 9rem;
+}
+
+.img img {
+    width: 70%;
     height: auto;
 }
 
-.product .description {
+.img h3 {
+    font-size: var(--title-size);
+    padding: 10px 0;
+}
+
+.description {
     color: var(--main-color);
     justify-content: right;
     align-items: flex-end;
     padding: 15px;
-    /* max-width: 50%; */
+    overflow-y: scroll;
+}
+
+.description p {
+    max-height: 10em;
+}
+
+.description h3 {
+    padding: 10px 0;
 }
 
 /* Change display to none of logo image */
@@ -88,6 +109,9 @@
         float: none;
         width: 100%;
         height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .header {

@@ -57,11 +57,13 @@ require("../config.php");
         $product = mysqli_query($link, $sql);
 
         while ($row = mysqli_fetch_array($product)) {
-            echo "<div class='img'><img src='." . $row['photo'] . "'</div>";
+            echo "<div class='img'><img src='." . $row['photo'] . "'></div>";
+            echo "<div class='product-container'>";
             echo "<div class='description'>";
             echo "<h2>" . $row['product_name'] . "</h2>";
             echo "<p>" . $row['description'] . "</p>";
-            echo "<a href='../basket?id='" . $row['id'] . "'><button>Kup teraz: " . $row['price'] . " PLN</button></a>";
+            echo "</div>";
+            echo "<div class='buyBtn'><a href='../basket?id='" . $row['id'] . "'><button>Kup teraz: " . $row['price'] . " PLN</button></a></div>";
             echo "</div>";
         }
     ?>

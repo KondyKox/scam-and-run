@@ -24,7 +24,14 @@
     font-size: var(--text-size);
 }
 
-.description button {
+.buyBtn {
+    clear: both;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buyBtn button {
     background: none;
     color: var(--main-color);
     font-size: var(--title-size);
@@ -36,9 +43,32 @@
     margin-top: 15%;
 }
 
-.description button:hover {
+.buyBtn button:hover {
     background: var(--main-color);
     color: var(--text-color);
     cursor: pointer;
     scale: 1.2;
+}
+
+/* ******************************************* */
+
+@media screen and (max-width: 768px) {
+    .container {
+        display: block;
+    }
+
+    .img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .description {
+        float: none;
+        text-align: center;
+    }
+
+    .description p {
+        text-align: justify;
+    }
 }
