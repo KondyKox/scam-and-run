@@ -119,13 +119,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><a href="../about" class="nav-link">O nas</a></li>
                 <li></li>
                 <li>
-                    <?php
-                    if (!isset($_SESSION["username"])) {
-                        echo '<a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
-                    } else
-                        echo '<a href="../login" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
-                    ?>
-                </li>
+          <?php
+          if (!isset($_SESSION["username"])) {
+            echo '<a href="../login" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
+          } else
+            echo '<a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
+          ?>
+        </li>
                 <li></li>
 
                 <?php
