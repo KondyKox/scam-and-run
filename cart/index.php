@@ -64,7 +64,8 @@ require("../config.php");
                     echo "<input type='number' value='" . $row['amount'] . "' class='amount' min='1'>";
                     echo "<h4>" . $row['product_price'] . " PLN</h4>";
                     echo "</div>";
-                    echo "<input type='submit' value='Usuń' class='delete'>";
+                    // echo "<input type='submit' value='' class='delete'><img src='../src/trash.png'></input>";
+                    echo "<button type='submit' class='delete'><img src='../src/trash.png' alt='Usuń z koszyka'></button>";
                     echo "</div>";
                 }
 

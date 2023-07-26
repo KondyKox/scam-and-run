@@ -23,7 +23,7 @@
   font-size: var(--title-size);
 }
 
-.product input {
+.product input, button {
   background: none;
   color: var(--text-color);
   font-size: var(--text-size);
@@ -41,12 +41,22 @@
   -webkit-appearance: none;
 }
 
-.product input[type="submit"] {
+.product input[type="submit"], button {
     border: none;
 }
 
-.product input:hover {
+.product input, button:hover {
   cursor: pointer;
+}
+
+.product button img {
+    width: 35px;
+    height: auto;
+    transition: all .3s ease-in-out;
+}
+
+.product button img:hover {
+    scale: 1.2;
 }
 
 .product .details {
