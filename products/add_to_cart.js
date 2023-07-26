@@ -1,22 +1,22 @@
-document.getElementById('addToCartBtn').addEventListener('click', function() {
-    // Pobierz productID z PHP (zmienna przekazywana przez PHP) i przypisz ją do zmiennej
-    const productID = '<?php echo $productID; ?>';
+// Nasłuchujemy kliknięcia na przycisk "Dodaj do koszyka"
+document.getElementById("addToCartBtn").addEventListener("click", function () {
+  // Pobieramy ID produktu z przycisku lub z innej zmiennej w swoim kontekście
+  var productID = parseInt("<?php echo $productID; ?>");
 
-    // Wyślij żądanie AJAX do pliku PHP (twoj_skrypt_php.php)
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', './index.php', true);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.send('productID=' + productID);
-
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                // Odpowiedź serwera
-                alert(xhr.responseText); // Wyświetl alert z odpowiedzią serwera
-            } else {
-                // Obsłuż błąd żądania
-                alert('Błąd żądania AJAX');
-            }
-        }
-    };
+  // Wykonujemy żądanie AJAX
+  $.ajax({
+    type: "POST",
+    url: "./index.php",
+    data: { id: productID },
+    dataType: "json",
+    success: function (response) {
+      // Obsługa odpowiedzi z serwera
+      console.log(response); // Powinien wyświetlić "Dodano do koszyka"
+      alert("Produkt został dodany do koszyka.");
+    },
+    error: function (xhr, status, error) {
+      console.error(error); // Wyświetlenie błędu w konsoli
+      alert("Wystąpił błąd. Produkt nie został dodany do koszyka.");
+    },
+  });
 });

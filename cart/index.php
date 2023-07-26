@@ -50,13 +50,28 @@ require("../config.php");
     </nav>
 
     <div class="container">
-        <form action="shopping.php" method="post">
+        <form action="index.php" method="post">
             <?php
-                $productID = $_GET['id'];
+            // $sql = "SELECT products.product_name, products.photo, cart.amount, cart.product_price FROM cart INNER JOIN products ON cart.product_id = products.id; WHERE user_id = $sesID;";
+            $sql = "SELECT products.product_name, products.photo, cart.amount, cart.product_price FROM cart INNER JOIN products ON cart.product_id = products.id WHERE user_id = 1;";
+            $result = mysqli_query($link, $sql);
 
-                $sql = "SELECT product_name, price, photo FROM products WHERE id = $productID";
-                $result = mysqli_query($link, $sql);
+            while ($row = mysqli_fetch_array($result)) {
+                echo "<div class='product'>";
+                echo "<img src='." . $row['photo'] . "'>";
+                echo "<h4>" . $row['product_name'] . "</h4>";
+                echo "<div class='details'>";
+                echo "<input type='number' value='" . $row['amount'] . "' class='amount' min='1'>";
+                echo "<h4>" . $row['product_price'] . " PLN</h4>";
+                echo "</div>";
+                echo "<input type='submit' value='Usuń' class='delete'>";
+                echo "</div>";
+            }
             ?>
+
+            <div class="total">
+                <input type="submit" value="Kup teraz: ">
+            </div>
         </form>
     </div>
 

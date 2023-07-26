@@ -6,6 +6,8 @@ require("../config.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (isset($_POST['productID'])) {
+    header('Content-Type: application/json');
+
     // Pobierz productID z żądania AJAX
     $productID = $_POST['productID'];
 
@@ -19,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $addToCart = "INSERT INTO cart (user_id, product_id, product_price) VALUES ($sesID, $productID, $productPrice)";
 
     if ($mysqli->query($addToCart) === TRUE) {
-      echo "Produkt został dodany do koszyka.";
+      echo json_encode("Dodano do koszyka");
     } else {
       echo "Błąd dodawania produktu do koszyka: " . $mysqli->error;
     }
@@ -43,6 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <link rel="stylesheet" href="../main.css" />
   <link rel="stylesheet" href="./style.css" />
+
+  <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -86,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php
     $productID = $_GET['id'];
 
-    $sql = "SELECT id, product_name, price, photo, description FROM products WHERE id = $productID;";
+    $sql = "SELECT product_name, price, photo, description FROM products WHERE id = $productID;";
 
     $product = mysqli_query($link, $sql);
 
