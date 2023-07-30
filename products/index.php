@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="../main.css" />
   <link rel="stylesheet" href="./style.css" />
 
-  <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script> -->
 </head>
 
 <body>
@@ -101,8 +101,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       echo "<h2>" . $row['product_name'] . "</h2>";
       echo "<p>" . $row['description'] . "</p>";
       echo "</div>";
-      // echo "<div class='buyBtn'><form action='index.php' method='post'><input type='submit' value='Dodaj do koszyka. Cena: " . $row['price'] . " PLN' /></form></div>";
-      echo "<div class='buyBtn'><form method='post'><button type='button' id='addToCartBtn'>Dodaj do koszyka. Cena: " . $row['price'] . " PLN</button></form></div>";
+      echo "<div class='buyBtn'><a href='../cart?id=" . $productID . "?price=" . $row['price'] . "'><input type='submit' value='Dodaj do koszyka. Cena: " . $row['price'] . " PLN' /></a></div>";
+      // echo "<div class='buyBtn'><form method='post'><button type='button' id='addToCartBtn'>Dodaj do koszyka. Cena: " . $row['price'] . " PLN</button></form></div>";
       echo "</div>";
     }
 
@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 
   <script src="../navbar.js"></script>
-  <script src="./add_to_cart.js"></script>
+  <!-- <script src="./add_to_cart.js"></script> -->
 </body>
 
 </html>

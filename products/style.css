@@ -31,7 +31,7 @@
     align-items: center;
 }
 
-.buyBtn button {
+.buyBtn input {
     background: none;
     color: var(--main-color);
     font-size: var(--title-size);
@@ -43,7 +43,7 @@
     margin-top: 15%;
 }
 
-.buyBtn button:hover {
+.buyBtn input:hover {
     background: var(--main-color);
     color: var(--text-color);
     cursor: pointer;
