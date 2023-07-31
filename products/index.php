@@ -110,7 +110,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 
   <script src="../navbar.js"></script>
-  <!-- <script src="./add_to_cart.js"></script> -->
 </body>
 
 </html>

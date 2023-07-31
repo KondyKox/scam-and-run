@@ -3,6 +3,12 @@ session_start();
 
 $sesID = $_SESSION['id'];
 require("../config.php");
+
+$productID = $_GET['id'];
+$productPrice = $_GET['price'];
+
+$addToCart = "INSERT INTO cart (user_id, product_id, product_price) VALUES $sesID, $productID, $productPrice;";
+$insert = mysqli_query($link, $addToCart);
 ?>
 
 <!DOCTYPE html>
