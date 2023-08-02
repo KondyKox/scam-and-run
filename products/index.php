@@ -72,8 +72,7 @@ require("../config.php");
       echo "<h2>" . $row['product_name'] . "</h2>";
       echo "<p>" . $row['description'] . "</p>";
       echo "</div>";
-      echo "<div class='buyBtn'><a href='../cart?id=" . $productID . "?price=" . $row['price'] . "'><input type='submit' value='Dodaj do koszyka. Cena: " . $row['price'] . " PLN' /></a></div>";
-      // echo "<div class='buyBtn'><form method='post'><button type='button' id='addToCartBtn'>Dodaj do koszyka. Cena: " . $row['price'] . " PLN</button></form></div>";
+      echo "<div class='buyBtn'><a href='../cart?id=" . $productID . "'><input type='submit' value='Dodaj do koszyka. Cena: " . $row['price'] . " PLN' /></a></div>";
       echo "</div>";
     }
 

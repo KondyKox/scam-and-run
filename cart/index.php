@@ -1,14 +1,42 @@
 <?php
 session_start();
 
-$sesID = $_SESSION['id'];
+// $sesID = $_SESSION['id'];
+$sesID = 1;
 require("../config.php");
 
-$productID = $_GET['id'];
-$productPrice = $_GET['price'];
+if (isset($_GET['id'])) {
+    $productID = $_GET['id'];
 
-$addToCart = "INSERT INTO cart (user_id, product_id, product_price) VALUES $sesID, $productID, $productPrice;";
-$insert = mysqli_query($link, $addToCart);
+    // Zabezpieczenie przed SQL Injection
+    $getPriceQuery = "SELECT price FROM products WHERE id = ?";
+    if ($stmt = mysqli_prepare($link, $getPriceQuery)) {
+        mysqli_stmt_bind_param($stmt, "i", $productID);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $productPrice);
+        mysqli_stmt_fetch($stmt);
+        mysqli_stmt_close($stmt);
+    } else {
+        // Obsługa błędu, gdy zapytanie się nie powiedzie
+        die("Błąd w zapytaniu SQL: " . mysqli_error($link));
+    }
+
+    // Zabezpieczenie przed SQL Injection
+    $addToCartQuery = "INSERT INTO cart (user_id, product_id, product_price) VALUES (?, ?, ?)";
+
+    if ($stmt = mysqli_prepare($link, $addToCartQuery)) {
+        mysqli_stmt_bind_param($stmt, "iii", $sesID, $productID, $productPrice);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+
+        // Przekierowanie do poprzedniej strony po dodaniu do koszyka
+        header("Location: {$_SERVER['HTTP_REFERER']}");
+        exit();
+    } else {
+        // Obsługa błędu, gdy zapytanie się nie powiedzie
+        die("Błąd w zapytaniu SQL: " . mysqli_error($link));
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +104,7 @@ $insert = mysqli_query($link, $addToCart);
                 }
 
                 echo    "<div class='total'>
-                        <input type='submit' value='Kup teraz: '>
+                        <input type='submit' value='Kup teraz: ' class='buy'>
                         </div>
                     ";
             } else {
