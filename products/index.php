@@ -3,34 +3,6 @@ session_start();
 
 $sesID = $_SESSION['id'];
 require("../config.php");
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  if (isset($_POST['productID'])) {
-    header('Content-Type: application/json');
-
-    // Pobierz productID z żądania AJAX
-    $productID = $_POST['productID'];
-
-    $getPrice = "SELECT price FROM products WHERE id = $productID;";
-    $result = mysqli_query($link, $getPrice);
-
-    $row = mysqli_fetch_assoc($result);
-    $productPrice = $row['price'];
-
-    // Wykonaj zapytanie do dodania danych do tabeli "cart"
-    $addToCart = "INSERT INTO cart (user_id, product_id, product_price) VALUES ($sesID, $productID, $productPrice)";
-
-    if ($mysqli->query($addToCart) === TRUE) {
-      echo json_encode("Dodano do koszyka");
-    } else {
-      echo "Błąd dodawania produktu do koszyka: " . $mysqli->error;
-    }
-  } else {
-    echo "Błąd: Nieprawidłowe dane.";
-  }
-} else {
-  echo "Błąd: Nieprawidłowy typ żądania.";
-}
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="../main.css" />
   <link rel="stylesheet" href="./style.css" />
 
-  <!-- <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script> -->
 </head>
 
 <body>

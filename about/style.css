@@ -1,0 +1,38 @@
+.ourIMG {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 3px solid var(--main-color);
+    width: 100%;
+}
+
+.ourIMG img {
+    max-width: 50em;
+    height: auto;
+    padding: 10px;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.text h1 {
+    padding: 10px;
+    font-size: var(--header-size);
+}
+
+.text p {
+    font-size: var(--text-size);
+    text-align: justify;
+}
+
+@media screen and (max-width: 768px) {
+    .ourIMG img {
+        max-width: 35em;
+    }
+}
