@@ -17,6 +17,8 @@ require("config.php");
 
   <link rel="stylesheet" href="./main.css" />
   <link rel="stylesheet" href="./style.css" />
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2534586073857624" crossorigin="anonymous"></script>
 </head>
 
 <body>
