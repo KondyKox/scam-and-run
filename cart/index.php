@@ -85,24 +85,24 @@ if (isset($_GET['id'])) {
     <div class="container">
         <form action="index.php" method="post">
             <?php
-            $sql = "SELECT products.product_name, products.photo, cart.amount, cart.product_price FROM cart INNER JOIN products ON cart.product_id = products.id WHERE user_id = 1;";
+            $sql = "SELECT products.id products.product_name, products.photo, cart.amount, cart.product_price FROM cart INNER JOIN products ON cart.product_id = products.id WHERE user_id = 1;";
             $result = mysqli_query($link, $sql);
 
             if ($row = mysqli_fetch_array($result)) {
                 while ($row = mysqli_fetch_array($result)) {
-                    echo "<div class='product'>";
+                    echo "<div class='product' data_product_id='" . $row['id'] . "'>";
                     echo "<img src='." . $row['photo'] . "'>";
                     echo "<h4>" . $row['product_name'] . "</h4>";
                     echo "<div class='details'>";
-                    echo "<input type='number' value='" . $row['amount'] . "' class='amount' min='1'>";
-                    echo "<h4>" . $row['product_price'] . " PLN</h4>";
+                    echo "<input type='number' value='" . $row['amount'] . "' class='amount' min='1' max='10'>";
+                    echo "<h4 class='price'>" . $row['product_price'] . " PLN</h4>";
                     echo "</div>";
                     echo "<button type='submit' class='delete'><img src='../src/trash.png' alt='Usuń z koszyka'></button>";
                     echo "</div>";
                 }
 
                 echo    "<div class='total'>
-                        <input type='submit' value='Kup teraz: ' class='buy'>
+                        <input type='submit' class='buy'>
                         </div>
                     ";
             } else {
@@ -113,6 +113,7 @@ if (isset($_GET['id'])) {
     </div>
 
     <script src="../navbar.js"></script>
+    <script src="./function.js"></script>
 </body>
 
 </html>
