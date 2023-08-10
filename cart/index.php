@@ -83,9 +83,9 @@ if (isset($_GET['id'])) {
     </nav>
 
     <div class="container">
-        <form action="index.php" method="post">
+        <form>
             <?php
-            $sql = "SELECT products.id products.product_name, products.photo, cart.amount, cart.product_price FROM cart INNER JOIN products ON cart.product_id = products.id WHERE user_id = 1;";
+            $sql = "SELECT products.id, products.product_name, products.photo, cart.amount, cart.product_price FROM cart INNER JOIN products ON cart.product_id = products.id WHERE user_id = 1;";
             $result = mysqli_query($link, $sql);
 
             if ($row = mysqli_fetch_array($result)) {
@@ -97,7 +97,7 @@ if (isset($_GET['id'])) {
                     echo "<input type='number' value='" . $row['amount'] . "' class='amount' min='1' max='10'>";
                     echo "<h4 class='price'>" . $row['product_price'] . " PLN</h4>";
                     echo "</div>";
-                    echo "<button type='submit' class='delete'><img src='../src/trash.png' alt='Usuń z koszyka'></button>";
+                    echo "<button class='delete'><img src='../src/trash.png' alt='Usuń z koszyka'></button>";
                     echo "</div>";
                 }
 

@@ -27,8 +27,9 @@ function changeProductPrice() {
 
       $.ajax({
         method: "POST",
-        url: "function.php",
+        url: "functions.php",
         data: {
+          action: "changeAmount",
           productID: productID,
           newAmount: newAmount,
         },
@@ -52,5 +53,27 @@ function totalPrice() {
   input.value = "Kup teraz: " + totalSum + " PLN";
 }
 
+// Delete item from cart
+function deleteItem() {
+  const container = document.querySelector(".container");
+  const deleteButtons = container.querySelectorAll(".delete");
+
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const productID = productDiv.getAttribute("data-product-id");
+
+      $.ajax({
+        method: "POST",
+        url: "functions.php",
+        data: {
+          action: "deleteItem",
+          productID: productID,
+        },
+      });
+    });
+  });
+}
+
 changeProductPrice();
 totalPrice();
+deleteItem();
