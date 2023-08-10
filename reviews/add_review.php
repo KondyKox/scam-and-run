@@ -7,14 +7,27 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 }
 
 $sesID = $_SESSION['id'];
-require("../config.php");
 
-$review = $_POST['#review'];
-$rating = $_POST['#rating'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  require_once '../config.php';
 
-$addReview = "INSERT INTO reviews VALUES (, $sesID, $review, $rating);";
+  $review = mysqli_real_escape_string($link, $_POST['review']);
+  $rating = mysqli_real_escape_string($link, $_POST['rating']);
 
-mysqli_query($link, $addReview);
+  $addReviewQuery = "INSERT INTO reviews (user_id, text, rating) VALUES (?, ?, ?)";
+
+  $stmt = mysqli_prepare($link, $addReviewQuery);
+  mysqli_stmt_bind_param($stmt, 'iss', $sesID, $review, $rating);
+
+  if (mysqli_stmt_execute($stmt)) {
+    echo json_encode(['success' => true, 'message' => 'Recenzja została dodana.']);
+  } else {
+    echo json_encode(['success' => false, 'message' => 'Wystąpił błąd podczas dodawania recenzji.']);
+  }
+
+  mysqli_stmt_close($stmt);
+  mysqli_close($link);
+}
 ?>
 
 <!DOCTYPE html>
