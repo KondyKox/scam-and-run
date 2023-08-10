@@ -59,7 +59,7 @@ function deleteItem() {
   const deleteButtons = container.querySelectorAll(".delete");
 
   deleteButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
+    button.addEventListener("click", () => {
       const productID = productDiv.getAttribute("data-product-id");
 
       $.ajax({
