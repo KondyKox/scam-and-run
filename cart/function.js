@@ -1,28 +1,17 @@
 // Change product price based on amount
 function changeProductPrice() {
   const container = document.querySelector(".container");
-
   const amountInputs = container.querySelectorAll(".amount");
 
   amountInputs.forEach((input) => {
     input.addEventListener("change", (event) => {
-      // Pobieramy rodzica inputa, który zawiera h4 z ceną
       const productDiv = event.target.closest(".product");
       const productID = productDiv.getAttribute("data-product-id");
-
-      // Pobieramy element h4 z ceną
       const priceElement = productDiv.querySelector(".price");
-
-      // Pobieramy wartość ceny (musimy zamienić na liczbę)
       const price = parseFloat(priceElement.textContent);
-
-      // Pobieramy nową wartość ilości z inputa
       const newAmount = parseFloat(event.target.value);
-
-      // Obliczamy nową cenę
       const newPrice = price * newAmount;
 
-      // Aktualizujemy zawartość h4 z ceną
       priceElement.textContent = newPrice + " PLN";
 
       $.ajax({
@@ -30,8 +19,15 @@ function changeProductPrice() {
         url: "functions.php",
         data: {
           action: "changeAmount",
-          productID: productID,
           newAmount: newAmount,
+          productID: productID,
+        },
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (xhr, status, error) {
+          console.error(error);
+          alert("Wystąpił błąd przy zmianie ilości.");
         },
       });
     });
@@ -59,7 +55,8 @@ function deleteItem() {
   const deleteButtons = container.querySelectorAll(".delete");
 
   deleteButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (event) => {
+      const productDiv = event.target.closest(".product");
       const productID = productDiv.getAttribute("data-product-id");
 
       $.ajax({
