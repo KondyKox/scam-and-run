@@ -4,6 +4,7 @@ session_start();
 $sesID = $_SESSION['id'];
 require("../config.php");
 
+// Adding to cart
 if (isset($_GET['id'])) {
     $productID = $_GET['id'];
 
@@ -83,7 +84,7 @@ if (isset($_GET['id'])) {
     </nav>
 
     <div class="container">
-        <form>
+        <form action="purchase.php" method="post">
             <?php
             $sql = "SELECT products.id, products.product_name, products.photo, cart.amount, cart.product_price FROM cart INNER JOIN products ON cart.product_id = products.id WHERE user_id = 1;";
             $result = mysqli_query($link, $sql);
