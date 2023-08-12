@@ -4,10 +4,12 @@
   --nav-color: #101013;
   --text-color: #fff;
   --main-color: #29fd53;
+  --label-color: #adadad;
 
   --text-size: 1.25rem;
   --title-size: 2rem;
   --header-size: 5vh;
+  --label-size: 1rem;
 }
 
 /* ************************************************ */

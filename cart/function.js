@@ -47,6 +47,7 @@ function totalPrice() {
   });
 
   input.value = "Kup teraz: " + totalSum + " PLN";
+  window.location.href = "purchase.php?total_cost=" + totalSum;
 }
 
 // Delete item from cart

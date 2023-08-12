@@ -7,8 +7,8 @@ require("../config.php");
 if (array_key_exists('buy', $_POST))
     purchase();
 
-function purchase() {
-
+function purchase()
+{
 }
 
 ?>
@@ -57,10 +57,48 @@ function purchase() {
         </div>
     </nav>
 
-    <div class="container">
-        <form action="purchase.php" method="post">
-            
-        </form>
+    <div class="extra">
+        <div class="container">
+            <form action="purchase.php" method="post" class="purchase">
+                <h2>Finalizacja zakupu</h2>
+                <div class="txtField">
+                    <input type="email" name="email" required>
+                    <span class="invalid-feedback"></span>
+                    <label>E-mail</label>
+                </div>
+
+                <div class="txtField">
+                    <input type="text" name="address" required>
+                    <span class="invalid-feedback"></span>
+                    <label>Adres</label>
+                </div>
+
+                <div class="txtField place">
+                    <input type="text" name="zip-code" required>
+                    <span class="invalid-feedback"></span>
+                    <label>Kod pocztowy</label>
+                </div>
+
+                <div class="txtField place">
+                    <input type="text" name="place" required>
+                    <span class="invalid-feedback"></span>
+                    <label>Miejscowość</label>
+                </div>
+
+                <div class="txtField">
+                    <script>
+                        var urlParams = new URLSearchParams(window.location.search);
+                        var totalCost = urlParams.get('total_cost');
+
+                        document.write(`<span class="total-cost">CAŁKOWITY KOSZT: ${totalCost} PLN</span>`);
+                    </script>
+                </div>
+
+                <div class="txtField no-border">
+                    <input type="submit" value="ZAMÓW" class="order">
+                </div>
+            </form>
+        </div>
     </div>
 
     <script src="../navbar.js"></script>
