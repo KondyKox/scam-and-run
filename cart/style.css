@@ -87,7 +87,7 @@ button:hover {
 }
 
 .total input:hover {
-  scale: 1.2;
+  scale: 1.1;
   cursor: pointer;
   background: var(--main-color);
   color: var(--text-color);

@@ -39,15 +39,16 @@ function totalPrice() {
   const input = document.querySelector(".buy");
   const priceElements = document.querySelectorAll(".price");
 
-  let totalSum = 0;
+  let total_cost = 0;
 
   priceElements.forEach((element) => {
     const price = parseFloat(element.textContent);
-    totalSum += price;
+    total_cost += price;
   });
 
-  input.value = "Kup teraz: " + totalSum + " PLN";
-  window.location.href = "purchase.php?total_cost=" + totalSum;
+  input.value = "Kup teraz: " + total_cost + " PLN";
+
+  document.cookie = "total_cost=" + total_cost;
 }
 
 // Delete item from cart
@@ -72,6 +73,23 @@ function deleteItem() {
   });
 }
 
+// Function to stop starting action after click on another inputs than submit
+function stopInputAction() {
+  document.addEventListener("DOMContentLoaded", function () {
+    const amountInput = document.querySelector(".amount");
+    const deleteButton = document.querySelector(".delete");
+
+    amountInput.addEventListener("change", function (event) {
+      event.preventDefault();
+    });
+
+    deleteButton.addEventListener("click", function (event) {
+      event.preventDefault();
+    });
+  });
+}
+
 changeProductPrice();
 totalPrice();
 deleteItem();
+stopInputAction();

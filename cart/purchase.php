@@ -25,6 +25,8 @@ function purchase()
 
     <link rel="stylesheet" href="../main.css" />
     <link rel="stylesheet" href="./style.css" />
+
+    <script src="./getCookie.js"></script>
 </head>
 
 <body>
@@ -87,8 +89,7 @@ function purchase()
 
                 <div class="txtField">
                     <script>
-                        var urlParams = new URLSearchParams(window.location.search);
-                        var totalCost = urlParams.get('total_cost');
+                        var totalCost = getCookie("total_cost");
 
                         document.write(`<span class="total-cost">CAŁKOWITY KOSZT: ${totalCost} PLN</span>`);
                     </script>
