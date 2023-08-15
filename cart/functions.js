@@ -7,27 +7,40 @@ function changeProductPrice() {
     input.addEventListener("change", (event) => {
       const productDiv = event.target.closest(".product");
       const productID = productDiv.getAttribute("data-product-id");
-      const priceElement = productDiv.querySelector(".price");
-      const price = parseFloat(priceElement.textContent);
-      const newAmount = parseFloat(event.target.value);
-      const newPrice = price * newAmount;
-
-      priceElement.textContent = newPrice + " PLN";
 
       $.ajax({
         method: "POST",
         url: "functions.php",
         data: {
-          action: "changeAmount",
-          newAmount: newAmount,
+          action: "getPrice",
           productID: productID,
         },
         success: function (response) {
-          console.log(response);
-        },
-        error: function (xhr, status, error) {
-          console.error(error);
-          alert("Wystąpił błąd przy zmianie ilości.");
+          let basicPrice = response;
+
+          const priceElement = productDiv.querySelector(".price");
+          const price = basicPrice;
+          const newAmount = parseFloat(event.target.value);
+          const newPrice = price * newAmount;
+
+          priceElement.textContent = newPrice + " PLN";
+
+          $.ajax({
+            method: "POST",
+            url: "functions.php",
+            data: {
+              action: "changeAmount",
+              newAmount: newAmount,
+              productID: productID,
+            },
+            success: function (response) {
+              console.log(response);
+            },
+            error: function (xhr, status, error) {
+              console.error(error);
+              alert("Wystąpił błąd przy zmianie ilości.");
+            },
+          });
         },
       });
     });
