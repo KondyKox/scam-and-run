@@ -42,6 +42,9 @@ function changeProductPrice() {
             },
           });
         },
+        error: function (xhr, status, error) {
+          console.error(error);
+        },
       });
     });
   });
@@ -80,6 +83,13 @@ function deleteItem() {
         data: {
           action: "deleteItem",
           productID: productID,
+        },
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (xhr, status, error) {
+          console.error(error);
+          alert("Wystąpił błąd przy usuwaniu przedmiotu.");
         },
       });
     });

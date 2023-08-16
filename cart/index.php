@@ -49,6 +49,8 @@ if (isset($_GET['id'])) {
     <title>Scam and Run</title>
     <link rel="icon" href="../src/logo.png">
 
+    <script src="../jquery-3.7.0.min.js"></script>
+
     <link rel="stylesheet" href="../main.css" />
     <link rel="stylesheet" href="./style.css" />
 </head>
