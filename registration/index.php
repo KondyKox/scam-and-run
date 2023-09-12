@@ -22,19 +22,19 @@
                 <li><a href="../about" class="nav-link">O nas</a></li>
                 <li></li>
                 <li>
-          <?php
-          if (!isset($_SESSION["email"])) {
-            echo '<a href="../login" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
-          } else
-            echo '<a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
-          ?>
-        </li>
+                    <?php
+                    if (!isset($_SESSION["email"])) {
+                        echo '<a href="../login" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
+                    } else
+                        echo '<a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
+                    ?>
+                </li>
                 <li></li>
 
                 <?php
                 if (!isset($_SESSION["email"])) {
                     echo '<li><a class="nav-link" href="../login">Logowanie </a></li>';
-                    echo '<li><a class="nav-link" href="./registration">Rejestracja</a></li>';
+                    echo '<li><a class="nav-link" href="./index.php">Rejestracja</a></li>';
                 } else
                     echo '<li><a class="nav-link" href="../logout">Wyloguj</a></li>';
                 ?>
@@ -50,7 +50,7 @@
 
     <div class="extra">
         <div class="login" id="login">
-            <form action="../functions/php/signIn.php" method="post">
+            <form action="../functions/php/signup.php" method="post">
                 <h2>REJESTRACJA</h2>
                 <div class="txtField">
                     <input type="text" name="email" required class="form-control">
@@ -61,7 +61,7 @@
                     <label>Hasło</label>
                 </div>
                 <div class="txtField">
-                    <input type="password" name="confirm_password" required class="form-control">
+                    <input type="password" name="confirm-password" required class="form-control">
                     <label>Powtórz hasło</label>
                 </div>
                 <div class="txtField registration">
@@ -70,9 +70,32 @@
                 <p style="text-align: center;">Masz już konto? <a href="../login">Zaloguj się tutaj</a>.</p>
             </form>
         </div>
+
+        <?php
+        if (isset($_GET['error'])) {
+            if ($_GET['error'] == 'emptyinput')
+                echo "<script>alert('Nie zostawiaj pustych pól!')</script>";
+
+            if ($_GET['error'] == 'invalidemail')
+                echo "<script>alert('Wpisz poprawny email!')</script>";
+
+            if ($_GET['error'] == 'passwordsdontmatch')
+                echo "<script>alert('Hasła nie są identyczne!')</script>";
+
+            if ($_GET['error'] == 'emailtaken')
+                echo "<script>alert('Email zajęty.')</script>";
+
+            if ($_GET['error'] == 'stmtfailed')
+                echo "<script>alert('Coś poszło nie tak... Spróbuj ponownie.')</script>";
+
+            if ($_GET['error'] == 'none')
+                echo "<script>alert('Udało się utworzyć konto! :D')</script>";
+        }
+        ?>
+
     </div>
 
-    <script src="../functions/navbar.js"></script>
+    <script src="../functions/js/navbar.js"></script>
 </body>
 
 </html>

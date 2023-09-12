@@ -115,7 +115,7 @@ if (isset($_GET['id'])) {
         </form>
     </div>
 
-    <script src="../functions/navbar.js"></script>
+    <script src="../functions/js/navbar.js"></script>
     <script src="./functions.js"></script>
 </body>
 

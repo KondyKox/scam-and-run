@@ -97,7 +97,7 @@ function purchase()
         </div>
     </div>
 
-    <script src="../functions/navbar.js"></script>
+    <script src="../functions/js/navbar.js"></script>
 </body>
 
 </html>
