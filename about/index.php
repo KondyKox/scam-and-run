@@ -15,8 +15,8 @@ require("../config.php");
   <title>Scam and Run</title>
   <link rel="icon" href="../src/logo.png">
 
-  <link rel="stylesheet" href="../main.css" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/about.css" />
 
 </head>
 
