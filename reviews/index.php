@@ -15,8 +15,8 @@ require('../config.php');
   <title>Scam and Run</title>
   <link rel="icon" href="../src/logo.png">
 
-  <link rel="stylesheet" href="../main.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/review.css" />
 </head>
 
 <body>
@@ -31,7 +31,7 @@ require('../config.php');
         <li></li>
         <li>
           <?php
-          if (!isset($_SESSION["username"])) {
+          if (!isset($_SESSION["email"])) {
             echo '<a href="../login" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
           } else
             echo '<a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
@@ -40,7 +40,7 @@ require('../config.php');
         <li></li>
 
         <?php
-        if (!isset($_SESSION["username"])) {
+        if (!isset($_SESSION["email"])) {
           echo '<li><a class="nav-link" href="../login">Logowanie </a></li>';
           echo '<li><a class="nav-link" href="../registration">Rejestracja</a></li>';
         } else
@@ -62,7 +62,7 @@ require('../config.php');
     </div>
     <div class="users-reviews">
       <?php
-      $sql = "SELECT reviews.text, reviews.rating, users.username FROM reviews
+      $sql = "SELECT reviews.text, reviews.rating, users.email FROM reviews
         INNER JOIN users ON reviews.user_id = users.id
         ORDER BY reviews.date";
 
@@ -70,7 +70,7 @@ require('../config.php');
 
       while ($row = $result->fetch_assoc()) {
         echo "<div class='review'>";
-        echo "<div class='user'>" . $row['username'] . "</div>";
+        echo "<div class='user'>" . $row['email'] . "</div>";
         // echo "<div class='rating'>" . $row['rating'] . "</div>";
         echo "<div class='rating'>";
 

@@ -51,8 +51,8 @@ if (isset($_GET['id'])) {
 
     <script src="../jquery-3.7.0.min.js"></script>
 
-    <link rel="stylesheet" href="../main.css" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/cart.css" />
 </head>
 
 <body>
@@ -69,7 +69,7 @@ if (isset($_GET['id'])) {
                 <li></li>
 
                 <?php
-                if (!isset($_SESSION["username"])) {
+                if (!isset($_SESSION["email"])) {
                     echo '<li><a class="nav-link" href="../login">Logowanie </a></li>';
                     echo '<li><a class="nav-link" href="../registration">Rejestracja</a></li>';
                 } else
@@ -100,7 +100,7 @@ if (isset($_GET['id'])) {
                     echo "<input type='number' value='" . $row['amount'] . "' class='amount' min='1' max='10'>";
                     echo "<h4 class='price'>" . $row['total_price'] . " PLN</h4>";
                     echo "</div>";
-                    echo "<button class='delete'><img src='../src/trash.png' alt='Usuń z koszyka'></button>";
+                    echo "<button class='delete' type='button'><img src='../src/trash.png' alt='Usuń z koszyka'></button>";
                     echo "</div>";
                 }
 

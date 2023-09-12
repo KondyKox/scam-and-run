@@ -99,6 +99,14 @@ function deleteItem() {
 // Function to stop starting action after click on another inputs than submit
 function stopInputAction() {
   document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function (event) {
+      if (!event.target.matches(".buy")) {
+        event.preventDefault();
+      }
+    });
+
     const amountInput = document.querySelector(".amount");
     const deleteButton = document.querySelector(".delete");
 

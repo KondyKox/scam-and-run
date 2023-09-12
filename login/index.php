@@ -9,15 +9,15 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 require_once "../config.php";
 $sesID = $_SESSION['id'];
 
-$username = $password = "";
-$username_err = $password_err = $login_err = "";
+$email = $password = "";
+$email_err = $password_err = $login_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if (empty(trim($_POST["username"]))) {
-        $username_err = "Please enter username.";
+    if (empty(trim($_POST["email"]))) {
+        $email_err = "Please enter email.";
     } else {
-        $username = trim($_POST["username"]);
+        $email = trim($_POST["email"]);
     }
 
     if (empty(trim($_POST["password"]))) {
@@ -26,19 +26,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = trim($_POST["password"]);
     }
 
-    if (empty($username_err) && empty($password_err)) {
-        $sql = "SELECT id, username, password FROM users WHERE username = ?";
+    if (empty($email_err) && empty($password_err)) {
+        $sql = "SELECT id, email, password FROM users WHERE email = ?";
 
         if ($stmt = mysqli_prepare($link, $sql)) {
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
+            mysqli_stmt_bind_param($stmt, "s", $param_email);
 
-            $param_username = $username;
+            $param_email = $email;
 
             if (mysqli_stmt_execute($stmt)) {
                 mysqli_stmt_store_result($stmt);
 
                 if (mysqli_stmt_num_rows($stmt) == 1) {
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                    mysqli_stmt_bind_result($stmt, $id, $email, $hashed_password);
 
                     if (mysqli_stmt_fetch($stmt)) {
                         if (password_verify($password, $hashed_password)) {
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;
+                            $_SESSION["email"] = $email;
 
                             header("location: ../index.php");
                         } else {
@@ -78,8 +78,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Scam and Run</title>
     <link rel="icon" href="../src/logo.png">
 
-    <link rel="stylesheet" href="../main.css" />
-    <link rel="stylesheet" href="../login.css" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/login.css" />
 </head>
 
 <body>
@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li></li>
                 <li>
                     <?php
-                    if (!isset($_SESSION["username"])) {
+                    if (!isset($_SESSION["email"])) {
                         echo '<a href="../login" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
                     } else
                         echo '<a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li></li>
 
                 <?php
-                if (!isset($_SESSION["username"])) {
+                if (!isset($_SESSION["email"])) {
                     echo '<li><a class="nav-link" href="./login">Logowanie </a></li>';
                     echo '<li><a class="nav-link" href="../registration">Rejestracja</a></li>';
                 } else
@@ -124,11 +124,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="index.php" method="post">
                 <h2>Logowanie</h2>
                 <div class="txtField">
-                    <input type="text" name="username" required class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    <input type="text" name="email" required class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
                     <span class="invalid-feedback">
-                        <?php echo $username_err; ?>
+                        <?php echo $email_err; ?>
                     </span>
-                    <label>Login</label>
+                    <label>Email</label>
                 </div>
                 <div class="txtField">
                     <input type="password" name="password" required class="<?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">

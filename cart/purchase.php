@@ -23,8 +23,8 @@ function purchase()
     <title>Scam and Run</title>
     <link rel="icon" href="../src/logo.png">
 
-    <link rel="stylesheet" href="../main.css" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/cart.css" />
 
     <script src="./getCookie.js"></script>
 </head>
@@ -43,7 +43,7 @@ function purchase()
                 <li></li>
 
                 <?php
-                if (!isset($_SESSION["username"])) {
+                if (!isset($_SESSION["email"])) {
                     echo '<li><a class="nav-link" href="../login">Logowanie </a></li>';
                     echo '<li><a class="nav-link" href="../registration">Rejestracja</a></li>';
                 } else
@@ -63,11 +63,6 @@ function purchase()
         <div class="container">
             <form action="purchase.php" method="post" class="purchase">
                 <h2>Finalizacja zakupu</h2>
-                <div class="txtField">
-                    <input type="email" name="email" required>
-                    <span class="invalid-feedback"></span>
-                    <label>E-mail</label>
-                </div>
 
                 <div class="txtField">
                     <input type="text" name="address" required>

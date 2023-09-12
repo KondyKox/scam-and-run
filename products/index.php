@@ -15,8 +15,8 @@ require("../config.php");
   <title>Scam and Run</title>
   <link rel="icon" href="../src/logo.png">
 
-  <link rel="stylesheet" href="../main.css" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/products.css" />
 
 </head>
 
@@ -32,7 +32,7 @@ require("../config.php");
         <li></li>
         <li>
           <?php
-          if (!isset($_SESSION["username"])) {
+          if (!isset($_SESSION["email"])) {
             echo '<a href="../login" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
           } else
             echo '<a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
@@ -41,7 +41,7 @@ require("../config.php");
         <li></li>
 
         <?php
-        if (!isset($_SESSION["username"])) {
+        if (!isset($_SESSION["email"])) {
           echo '<li><a class="nav-link" href="../login">Logowanie </a></li>';
           echo '<li><a class="nav-link" href="../registration">Rejestracja</a></li>';
         } else
