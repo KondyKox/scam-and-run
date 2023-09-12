@@ -50,7 +50,7 @@
 
     <div class="extra">
         <div class="login" id="login">
-            <form action="signIn.php" method="post">
+            <form action="../functions/php/signIn.php" method="post">
                 <h2>REJESTRACJA</h2>
                 <div class="txtField">
                     <input type="text" name="email" required class="form-control">
@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    <script src="../navbar.js"></script>
+    <script src="../functions/navbar.js"></script>
 </body>
 
 </html>

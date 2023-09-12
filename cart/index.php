@@ -49,7 +49,7 @@ if (isset($_GET['id'])) {
     <title>Scam and Run</title>
     <link rel="icon" href="../src/logo.png">
 
-    <script src="../jquery-3.7.0.min.js"></script>
+    <script src="../functions/js/jquery-3.7.0.min.js"></script>
 
     <link rel="stylesheet" href="../styles/main.css" />
     <link rel="stylesheet" href="../styles/cart.css" />
@@ -115,7 +115,7 @@ if (isset($_GET['id'])) {
         </form>
     </div>
 
-    <script src="../navbar.js"></script>
+    <script src="../functions/navbar.js"></script>
     <script src="./functions.js"></script>
 </body>
 

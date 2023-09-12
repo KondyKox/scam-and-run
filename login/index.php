@@ -121,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="extra">
         <div class="login" id="login">
-            <form action="index.php" method="post">
+            <form action="../functions/php/logIn.php" method="post">
                 <h2>Logowanie</h2>
                 <div class="txtField">
                     <input type="text" name="email" required class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
@@ -145,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
 
-        <script src="../navbar.js"></script>
+        <script src="../functions/navbar.js"></script>
 </body>
 
 </html>

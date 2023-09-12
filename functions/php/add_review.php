@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="submit" class="add" value="Dodaj recenzję">
   </form>
 
-  <script src="../navbar.js"></script>
+  <script src="../functions/navbar.js"></script>
 </body>
 
 </html>

@@ -90,7 +90,7 @@ require("config.php");
     ?>
   </div>
 
-  <script src="navbar.js"></script>
+  <script src="./functions/navbar.js"></script>
 </body>
 
 </html>
