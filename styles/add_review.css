@@ -1,0 +1,70 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  border: 1px solid var(--main-color);
+  border-radius: 10px;
+  padding: 1em;
+  margin: 1.5em;
+}
+
+.form-title {
+  font-size: var(--header-size);
+  font-weight: 600;
+  padding: 1em;
+  border-bottom: 1px solid var(--main-color);
+}
+
+.form-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+.form-section label {
+  font-size: var(--text-size);
+  padding: 0.5em;
+  align-items: center;
+}
+
+.form-input {
+  width: 70%;
+  justify-content: flex-end;
+  border: 1px solid var(--main-color);
+  border-radius: 10px;
+  font-size: var(--text-size);
+  font-weight: 600;
+  margin: .5em;
+}
+
+.rating {
+    min-height: 2em;
+}
+
+.review {
+    min-height: 6em;
+    height: 10em;
+}
+
+.add {
+  background: none;
+  color: var(--main-color);
+  font-size: var(--title-size);
+  text-align: center;
+  padding: 20px;
+  border: 1px solid var(--main-color);
+  border-radius: 25px;
+  transition: all 0.5s ease-in-out;
+}
+
+.add:hover {
+  background: var(--main-color);
+  color: var(--text-color);
+  cursor: pointer;
+  scale: 1.2;
+}

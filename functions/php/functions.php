@@ -49,12 +49,10 @@ function userExists($link, $email)
 
     $resultData = mysqli_stmt_get_result($stmt);
 
-    if ($row = mysqli_fetch_assoc($resultData)) {
+    if ($row = mysqli_fetch_assoc($resultData))
         return $row;
-    } else {
-        $result = false;
-        return $result;
-    }
+    else
+        return false;
 
     mysqli_stmt_close($stmt);
 }
@@ -102,6 +100,7 @@ function loginUser($link, $email, $password)
     }
 
     $passwordHashed = $userExists['password'];
+
     $checkPassword = password_verify($password, $passwordHashed);
 
     if (!$checkPassword) {
@@ -109,6 +108,7 @@ function loginUser($link, $email, $password)
         exit();
     } else if ($checkPassword) {
         session_start();
+        $_SESSION["loggedin"] = true;
         $_SESSION['id'] = $userExists['id'];
         $_SESSION['email'] = $userExists['email'];
 

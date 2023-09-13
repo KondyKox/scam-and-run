@@ -1,71 +1,71 @@
 .reviews {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .users-reviews {
-    margin: 5%;
-    width: 90%;
-    height: auto;
-    max-height: 60vh;
+  margin: 5%;
+  width: 90%;
+  height: auto;
+  max-height: 60vh;
 }
 
 .review {
-    border: 3px solid var(--main-color);
-    border-radius: 10px;
-    margin: 3%;
-    padding: 10px;
-    min-height: 100px;
-    height: auto;
-    font-size: var(--text-size);
+  border: 3px solid var(--main-color);
+  border-radius: 10px;
+  margin: 3%;
+  padding: 10px;
+  min-height: 100px;
+  height: auto;
+  font-size: var(--text-size);
 }
 
 .user {
-    float: left;
-    padding: 5px;
-    font-weight: 700;
-    font-size: var(--title-size);
-    color: var(--main-color);
+  float: left;
+  padding: 5px;
+  font-weight: 700;
+  font-size: var(--title-size);
+  color: var(--main-color);
 }
 
 .rating {
-    float: right;
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  float: right;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .rating img {
-    width: 35px;
-    height: auto;
+  width: 35px;
+  height: auto;
 }
 
 .comment {
-    clear: both;
-    padding: 5px;
+  clear: both;
+  padding: 5px;
 }
 
 .add-review {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .add {
-    background: none;
-    color: var(--main-color);
-    font-size: var(--title-size);
-    text-align: center;
-    padding: 20px;
-    border: 1px solid var(--main-color);
-    border-radius: 25px;
-    transition: all .5s ease-in-out;
-    margin-top: 15%;
+  background: none;
+  color: var(--main-color);
+  font-size: var(--title-size);
+  text-align: center;
+  padding: 20px;
+  border: 1px solid var(--main-color);
+  border-radius: 25px;
+  transition: all 0.5s ease-in-out;
+  margin-top: 15%;
 }
 
 .add:hover {
-    background: var(--main-color);
-    color: var(--text-color);
-    cursor: pointer;
-    scale: 1.2;
+  background: var(--main-color);
+  color: var(--text-color);
+  cursor: pointer;
+  scale: 1.2;
 }
