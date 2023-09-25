@@ -97,7 +97,7 @@ if (isset($_GET['id'])) {
                     echo "<img src='." . $row['photo'] . "'>";
                     echo "<h4>" . $row['product_name'] . "</h4>";
                     echo "<div class='details'>";
-                    echo "<input type='number' value='" . $row['amount'] . "' class='amount' data-product-id='" . $row['id'] . "' min='1' max='10'>";
+                    echo "<input type='number' value='" . $row['amount'] . "' class='amount' name='quantity' data-product-id='" . $row['id'] . "' min='1' max='10'>";
                     echo "<h4 class='price'>" . $row['total_price'] . " PLN</h4>";
                     echo "</div>";
                     echo "<button class='delete' type='button' data-product-id='" . $row['id'] . "'><img src='../src/trash.png' alt='Usuń z koszyka'></button>";

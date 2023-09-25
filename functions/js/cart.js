@@ -4,7 +4,7 @@ $(".delete").click(function () {
 
   $.ajax({
     type: "POST",
-    url: "../php/remove_from_cart.php",
+    url: "../functions/php/remove_from_cart.php",
     data: { productID: productId },
     success: function (response) {
       if (response.success) {
@@ -24,55 +24,29 @@ $(".delete").click(function () {
 $(".amount").change(function () {
   var productId = $(this).data("product-id");
   var newAmount = $(this).val();
+  
+  updateProduct(productId, newAmount);
 
+  totalPrice();
+});
+
+// Funkcja do aktualizacji produktu
+function updateProduct(productId, newAmount) {
   $.ajax({
     type: "POST",
-    url: "../php/update_quantity.php",
+    url: "../functions/php/update_product.php",
     data: { productID: productId, newAmount: newAmount },
     success: function (response) {
       if (response.success) {
-        // Zaktualizowano ilość produktu, możesz zaktualizować cenę na stronie
-        updatePrice(productId, newAmount);
+        location.reload();
+        console.log(response);
       } else {
-        alert("Błąd podczas aktualizacji ilości produktu.");
+        location.reload();
       }
     },
     error: function (xhr, status, error) {
       console.error(error);
       alert("Wystąpił błąd podczas komunikacji z serwerem. Error: " + error);
-    },
-  });
-});
-
-// Nasłuchiwanie zmiany ilości produktu
-const amountInputs = document.querySelectorAll(".amount");
-
-amountInputs.forEach((input) => {
-  input.addEventListener("change", (event) => {
-    const productDiv = event.target.closest(".product");
-    const productID = productDiv.getAttribute("data-product-id");
-    const newAmount = parseFloat(event.target.value);
-
-    // Aktualizacja ceny
-    updatePrice(productID, newAmount);
-  });
-});
-
-// Funkcja do aktualizacji ceny na stronie po zmianie ilości
-function updatePrice(productID, newAmount) {
-  $.ajax({
-    method: "POST",
-    url: "../php/updatePrice.php",
-    data: {
-      productID: productID,
-      newAmount: newAmount,
-    },
-    success: function (response) {
-      console.log(response);
-    },
-    error: function (xhr, status, error) {
-      console.error(error);
-      alert("Wystąpił błąd przy aktualizacji ceny. Error: " + error);
     },
   });
 }
