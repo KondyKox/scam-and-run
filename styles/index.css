@@ -47,12 +47,15 @@
 .product {
     border: 3px solid var(--main-color);
     border-radius: 10px;
-    max-width: 20em;
+    min-width: 20em;
     height: 15em;
     padding: 10px;
-    margin: 5px;
+    margin: 2em;
     transition: all .5s ease-in-out;
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .product a {
@@ -93,15 +96,7 @@
     justify-content: right;
     align-items: flex-end;
     padding: 15px;
-    overflow-y: scroll;
-}
-
-.description p {
-    max-height: 10em;
-}
-
-.description h3 {
-    padding: 10px 0;
+    overflow-y: hidden;
 }
 
 /* Change display to none of logo image */
@@ -127,11 +122,5 @@
     .products h2 {
         padding: 20px;
         font-size: var(--header-size);
-    }
-
-    .product {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
     }
 }

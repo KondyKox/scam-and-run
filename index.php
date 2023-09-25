@@ -70,7 +70,7 @@ require("config.php");
   <div class="products">
     <h2>Nasze produkty:</h2>
     <?php
-    $sql = "SELECT id, product_name, price, photo, description FROM products;";
+    $sql = "SELECT id, product_name, price, photo FROM products;";
 
     $product = mysqli_query($link, $sql);
 
@@ -82,7 +82,6 @@ require("config.php");
       echo "</div>";
       echo "<div class='description'>";
       echo "<h3>" . $row['product_name'] . "</h3>";
-      echo "<p>" . $row['description'] . "</p>";
       echo "</a>";
       echo "</div>";
       echo "</div>";
