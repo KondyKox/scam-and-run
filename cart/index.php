@@ -8,33 +8,43 @@ require("../config.php");
 if (isset($_GET['id'])) {
     $productID = $_GET['id'];
 
-    // Zabezpieczenie przed SQL Injection
-    $getPriceQuery = "SELECT price FROM products WHERE id = ?";
-    if ($stmt = mysqli_prepare($link, $getPriceQuery)) {
-        mysqli_stmt_bind_param($stmt, "i", $productID);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $productPrice);
-        mysqli_stmt_fetch($stmt);
-        mysqli_stmt_close($stmt);
-    } else {
-        // Obsługa błędu, gdy zapytanie się nie powiedzie
-        die("Błąd w zapytaniu SQL: " . mysqli_error($link));
-    }
+    // Check if item is already in cart
+    $isInCart = "SELECT product_id FROM cart WHERE user_id = ? AND product_id = ?;";
+    $stmt = mysqli_prepare($link, $isInCart);
+    mysqli_stmt_bind_param($stmt, 'ii', $sesID, $productID);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $cartProductID);
+    mysqli_stmt_close($stmt);
 
-    // Zabezpieczenie przed SQL Injection
-    $addToCartQuery = "INSERT INTO cart (user_id, product_id, product_price) VALUES (?, ?, ?)";
+    if (!$productID === $cartProductID) {
+        // Zabezpieczenie przed SQL Injection
+        $getPriceQuery = "SELECT price FROM products WHERE id = ?";
+        if ($stmt = mysqli_prepare($link, $getPriceQuery)) {
+            mysqli_stmt_bind_param($stmt, "i", $productID);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $productPrice);
+            mysqli_stmt_fetch($stmt);
+            mysqli_stmt_close($stmt);
+        } else {
+            // Obsługa błędu, gdy zapytanie się nie powiedzie
+            die("Błąd w zapytaniu SQL: " . mysqli_error($link));
+        }
 
-    if ($stmt = mysqli_prepare($link, $addToCartQuery)) {
-        mysqli_stmt_bind_param($stmt, "iii", $sesID, $productID, $productPrice);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_close($stmt);
+        // Zabezpieczenie przed SQL Injection
+        $addToCartQuery = "INSERT INTO cart (user_id, product_id, product_price) VALUES (?, ?, ?)";
 
-        // Przekierowanie do poprzedniej strony po dodaniu do koszyka
-        header("Location: {$_SERVER['HTTP_REFERER']}");
-        exit();
-    } else {
-        // Obsługa błędu, gdy zapytanie się nie powiedzie
-        die("Błąd w zapytaniu SQL: " . mysqli_error($link));
+        if ($stmt = mysqli_prepare($link, $addToCartQuery)) {
+            mysqli_stmt_bind_param($stmt, "iii", $sesID, $productID, $productPrice);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+
+            // Przekierowanie do poprzedniej strony po dodaniu do koszyka
+            header("Location: {$_SERVER['HTTP_REFERER']}");
+            exit();
+        } else {
+            // Obsługa błędu, gdy zapytanie się nie powiedzie
+            die("Błąd w zapytaniu SQL: " . mysqli_error($link));
+        }
     }
 }
 ?>
