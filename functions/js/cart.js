@@ -10,7 +10,8 @@ $(".delete").click(function () {
       if (response.success) {
         location.reload(); // Odśwież stronę
       } else {
-        alert("Błąd podczas usuwania produktu z koszyka.");
+        location.reload();
+        // alert("Błąd podczas usuwania produktu z koszyka.");
       }
     },
     error: function (xhr, status, error) {
@@ -42,6 +43,7 @@ function updateProduct(productId, newAmount) {
         console.log(response);
       } else {
         location.reload();
+        // alert("Błąd podczas aktualizacji produktu.");
       }
     },
     error: function (xhr, status, error) {

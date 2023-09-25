@@ -16,7 +16,7 @@ if (isset($_GET['id'])) {
     mysqli_stmt_bind_result($stmt, $cartProductID);
     mysqli_stmt_close($stmt);
 
-    if (!$productID === $cartProductID) {
+    if ($cartProductID === null) {
         // Zabezpieczenie przed SQL Injection
         $getPriceQuery = "SELECT price FROM products WHERE id = ?";
         if ($stmt = mysqli_prepare($link, $getPriceQuery)) {
@@ -39,7 +39,7 @@ if (isset($_GET['id'])) {
             mysqli_stmt_close($stmt);
 
             // Przekierowanie do poprzedniej strony po dodaniu do koszyka
-            header("Location: {$_SERVER['HTTP_REFERER']}");
+            header("Location: ../cart");
             exit();
         } else {
             // Obsługa błędu, gdy zapytanie się nie powiedzie
