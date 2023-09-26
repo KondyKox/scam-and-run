@@ -26,7 +26,8 @@ $(".quantity").change(function () {
   var productId = $(this).data("product-id");
   var newQuantity = $(this).val();
 
-  updateProduct(productId, newQuantity);
+  if (newQuantity <= 10)
+    updateProduct(productId, newQuantity);
 });
 
 // Funkcja do aktualizacji produktu
