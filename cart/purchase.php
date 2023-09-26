@@ -42,8 +42,6 @@ if (isset($_POST['buy'])) {
 
     <link rel="stylesheet" href="../styles/main.css" />
     <link rel="stylesheet" href="../styles/purchase.css" />
-
-    <script src="./getCookie.js"></script>
 </head>
 
 <body>

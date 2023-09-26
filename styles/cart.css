@@ -72,7 +72,7 @@ button:hover {
 .total {
   padding: 20px;
   display: flex;
-  justify-content: right;
+  justify-content: center;
   align-items: center;
 }
 
@@ -93,14 +93,7 @@ button:hover {
   color: var(--text-color);
 }
 
-.empty {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.empty h1 {
+.total h1 {
   font-size: var(--header-size);
   text-align: center;
 }

@@ -107,6 +107,7 @@ if (isset($_GET['id'])) {
             mysqli_stmt_bind_result($stmt, $id, $product_name, $photo, $quantity, $total_price);
 
             $totalCost = 0;
+            $isEmpty = true;
 
             while (mysqli_stmt_fetch($stmt)) {
                 echo "<div class='product'>";
@@ -116,17 +117,23 @@ if (isset($_GET['id'])) {
                 echo "<input type='number' value='" . $quantity . "' class='quantity' name='quantity_product_" . $id . "' data-product-id='" . $id . "' min='1' max='10'>";
                 echo "<h4 class='price'>" . $total_price . " PLN</h4>";
                 echo "</div>";
+                echo "<button class='delete' type='button' data-product-id='" . $id . "'><img src='../src/trash.png' alt='Usuń z koszyka'></button>";
                 echo "<input type='hidden' name='price_product_" . $id . "' value='" . $total_price . "'>";
                 echo "</div>";
 
                 $totalCost += $total_price;
+                $isEmpty = false;
             }
 
             mysqli_stmt_close($stmt);
+
+            echo "<div class='total'>";
+            if ($isEmpty)
+                echo "<h1>Twój koszyk jest pusty :(</h1>";
+            else
+                echo "<input type='submit' class='buy' name='buy'>";
+            echo "</div>"
             ?>
-            <div class='total'>
-                <input type='submit' class='buy' name='buy'>
-            </div>
 
             <input type='hidden' name='total_cost' value='<?php echo $totalCost; ?>'>
         </form>
