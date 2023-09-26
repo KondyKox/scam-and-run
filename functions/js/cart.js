@@ -22,19 +22,19 @@ $(".delete").click(function () {
 });
 
 // Obsługa zmiany ilości produktu
-$(".amount").change(function () {
+$(".quantity").change(function () {
   var productId = $(this).data("product-id");
-  var newAmount = $(this).val();
-  
-  updateProduct(productId, newAmount);
+  var newQuantity = $(this).val();
+
+  updateProduct(productId, newQuantity);
 });
 
 // Funkcja do aktualizacji produktu
-function updateProduct(productId, newAmount) {
+function updateProduct(productId, newQuantity) {
   $.ajax({
     type: "POST",
     url: "../functions/php/update_product.php",
-    data: { productID: productId, newAmount: newAmount },
+    data: { productID: productId, newQuantity: newQuantity },
     success: function (response) {
       if (response.success) {
         location.reload();
@@ -68,8 +68,24 @@ function totalPrice() {
 
 // Obsługa przycisku "Kup"
 function checkout() {
-  // Przekierowanie na stronę zakupów
-  window.location.href = "purchase.php";
+  // Zbierz dane z produktów w koszyku
+  const products = [];
+
+  $(".product").each(function () {
+    const productId = $(this).find(".quantity").data("product-id");
+    const quantity = parseFloat($(this).find(".quantity").val());
+
+    if (!isNaN(quantity) && quantity > 0) {
+      products.push({
+        productId: productId,
+        quantity: quantity,
+      });
+    }
+  });
+
+  // Przenieś dane do strony zakupowej (purchase.php) za pomocą URL
+  const purchaseUrl = "purchase.php?products=" + JSON.stringify(products);
+  window.location.href = purchaseUrl;
 }
 
 totalPrice();

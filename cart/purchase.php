@@ -4,6 +4,13 @@ session_start();
 $sesID = $_SESSION['id'];
 require("../config.php");
 
+if (isset($_GET['products'])) {
+    $products = json_decode($_GET['products'], true);
+
+    // Przekaż dane do sesji, aby były dostępne na stronie zakupu
+    $_SESSION['purchase_products'] = $products;
+}
+
 if (array_key_exists('buy', $_POST))
     purchase();
 
@@ -83,11 +90,7 @@ function purchase()
                 </div>
 
                 <div class="txtField">
-                    <script>
-                        var totalCost = getCookie("total_cost");
 
-                        document.write(`<span class="total-cost">CAŁKOWITY KOSZT: ${totalCost} PLN</span>`);
-                    </script>
                 </div>
 
                 <div class="txtField no-border">
