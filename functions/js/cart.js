@@ -66,26 +66,4 @@ function totalPrice() {
   input.value = "Kup teraz: " + total_cost + " PLN";
 }
 
-// Obsługa przycisku "Kup"
-function checkout() {
-  // Zbierz dane z produktów w koszyku
-  const products = [];
-
-  $(".product").each(function () {
-    const productId = $(this).find(".quantity").data("product-id");
-    const quantity = parseFloat($(this).find(".quantity").val());
-
-    if (!isNaN(quantity) && quantity > 0) {
-      products.push({
-        productId: productId,
-        quantity: quantity,
-      });
-    }
-  });
-
-  // Przenieś dane do strony zakupowej (purchase.php) za pomocą URL
-  const purchaseUrl = "purchase.php?products=" + JSON.stringify(products);
-  window.location.href = purchaseUrl;
-}
-
 totalPrice();

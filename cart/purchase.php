@@ -4,18 +4,28 @@ session_start();
 $sesID = $_SESSION['id'];
 require("../config.php");
 
-if (isset($_GET['products'])) {
-    $products = json_decode($_GET['products'], true);
+if (isset($_POST['buy'])) {
+    require_once '../functions/php/functions.php';
 
-    // Przekaż dane do sesji, aby były dostępne na stronie zakupu
-    $_SESSION['purchase_products'] = $products;
-}
+    $productData = [];
+    $totalCost = $_POST['total_cost'];
 
-if (array_key_exists('buy', $_POST))
-    purchase();
+    foreach ($_POST as $key => $value) {
+        if (strpos($key, 'quantity_product_') === 0) {
+            $productID = str_replace('quantity_product_', '', $key);
+            $quantity = $_POST[$key];
+            $price = $_POST['price_product_' . $productID];
 
-function purchase()
-{
+            $productData[] = [
+                'product_id' => $productID,
+                'quantity' => $quantity,
+                'price' => $quantity * $price,
+            ];
+        }
+    }
+
+    if (array_key_exists('order', $_POST))
+        purchase($link, $productData, $sesID);
 }
 
 ?>
@@ -31,7 +41,7 @@ function purchase()
     <link rel="icon" href="../src/logo.png">
 
     <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/cart.css" />
+    <link rel="stylesheet" href="../styles/purchase.css" />
 
     <script src="./getCookie.js"></script>
 </head>
@@ -73,28 +83,27 @@ function purchase()
 
                 <div class="txtField">
                     <input type="text" name="address" required>
-                    <span class="invalid-feedback"></span>
                     <label>Adres</label>
                 </div>
 
                 <div class="txtField place">
                     <input type="text" name="zip-code" required>
-                    <span class="invalid-feedback"></span>
                     <label>Kod pocztowy</label>
                 </div>
 
                 <div class="txtField place">
                     <input type="text" name="place" required>
-                    <span class="invalid-feedback"></span>
                     <label>Miejscowość</label>
                 </div>
 
                 <div class="txtField">
-
+                    <?php
+                    echo "<span>Całkowity koszt: $totalCost PLN</span>"
+                    ?>
                 </div>
 
                 <div class="txtField no-border">
-                    <input type="submit" value="ZAMÓW" class="order">
+                    <input type="submit" value="ZAMÓW" class="order" name="order">
                 </div>
             </form>
         </div>

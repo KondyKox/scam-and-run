@@ -98,31 +98,40 @@ if (isset($_GET['id'])) {
     <div class="container">
         <form action="purchase.php" method="post">
             <?php
-            $sql = "SELECT products.id, products.product_name, products.photo, cart.quantity, cart.total_price FROM cart INNER JOIN products ON cart.product_id = products.id WHERE user_id = 1;";
-            $result = mysqli_query($link, $sql);
+            $getProducts = "SELECT products.id, products.product_name, products.photo, cart.quantity, cart.total_price
+                            FROM cart INNER JOIN products ON cart.product_id = products.id WHERE user_id = ?;";
 
-            if ($row = mysqli_fetch_array($result)) {
-                while ($row = mysqli_fetch_array($result)) {
-                    echo "<div class='product'>";
-                    echo "<img src='." . $row['photo'] . "'>";
-                    echo "<h4>" . $row['product_name'] . "</h4>";
-                    echo "<div class='details'>";
-                    echo "<input type='number' value='" . $row['quantity'] . "' class='quantity' name='quantity' data-product-id='" . $row['id'] . "' min='1' max='10'>";
-                    echo "<h4 class='price'>" . $row['total_price'] . " PLN</h4>";
-                    echo "</div>";
-                    echo "<button class='delete' type='button' data-product-id='" . $row['id'] . "'><img src='../src/trash.png' alt='Usuń z koszyka'></button>";
-                    echo "</div>";
-                }
+            $stmt = mysqli_prepare($link, $getProducts);
+            mysqli_stmt_bind_param($stmt, 'i', $sesID);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $id, $product_name, $photo, $quantity, $total_price);
 
-                echo    "<div class='total'>
-                <input type='button' class='buy' onclick='checkout()'>
-                </div>
-                ";
-            } else {
-                echo "<div class='empty'><h1>Twój koszyk jest pusty :(</h1></div>";
+            $totalCost = 0;
+
+            while (mysqli_stmt_fetch($stmt)) {
+                echo "<div class='product'>";
+                echo "<img src='." . $photo . "'>";
+                echo "<h4>" . $product_name . "</h4>";
+                echo "<div class='details'>";
+                echo "<input type='number' value='" . $quantity . "' class='quantity' name='quantity_product_" . $id . "' data-product-id='" . $id . "' min='1' max='10'>";
+                echo "<h4 class='price'>" . $total_price . " PLN</h4>";
+                echo "</div>";
+                echo "<input type='hidden' name='price_product_" . $id . "' value='" . $total_price . "'>";
+                echo "</div>";
+
+                $totalCost += $total_price;
             }
+
+            mysqli_stmt_close($stmt);
             ?>
+            <div class='total'>
+                <input type='submit' class='buy' name='buy'>
+            </div>
+
+            <input type='hidden' name='total_cost' value='<?php echo $totalCost; ?>'>
         </form>
+
+
     </div>
 
     <script src="../functions/js/navbar.js"></script>
