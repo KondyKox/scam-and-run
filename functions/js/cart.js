@@ -27,8 +27,6 @@ $(".amount").change(function () {
   var newAmount = $(this).val();
   
   updateProduct(productId, newAmount);
-
-  totalPrice();
 });
 
 // Funkcja do aktualizacji produktu
