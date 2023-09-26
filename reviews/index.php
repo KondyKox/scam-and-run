@@ -58,7 +58,7 @@ require('../config.php');
 
   <div class="reviews">
     <div class="add-review">
-      <a href="../functions/php/add_review.php"><input type="submit" class="add" value="Dodaj recenzję"></a>
+      <a href="add_review.php"><input type="submit" class="add" value="Dodaj recenzję"></a>
     </div>
     <div class="users-reviews">
       <?php

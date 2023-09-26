@@ -2,14 +2,14 @@
 session_start();
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-  header("location: ../../login");
+  header("location: ../login");
   exit;
 }
 
 $sesID = $_SESSION['id'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  require_once '../../config.php';
+  require_once '../config.php';
 
   $review = mysqli_real_escape_string($link, $_POST['review']);
   $rating = mysqli_real_escape_string($link, $_POST['rating']);
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if (mysqli_stmt_execute($stmt)) {
     // echo json_encode(['success' => true, 'message' => 'Recenzja została dodana.']);
-    header("location: ../../reviews");
+    header("location: ../reviews");
   } else {
     echo json_encode(['success' => false, 'message' => 'Wystąpił błąd podczas dodawania recenzji.']);
   }
@@ -39,10 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scam and Run</title>
-  <link rel="icon" href="../../src/logo.png">
+  <link rel="icon" href="../src/logo.png">
 
-  <link rel="stylesheet" href="../../styles/main.css" />
-  <link rel="stylesheet" href="../../styles/add_review.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/add_review.css" />
 </head>
 
 <body>
@@ -50,27 +50,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="logo"><a href="../index.php">Scam and Run</a></div>
     <div class="nav-container">
       <ul class="nav-links">
-        <li><a href="../../index.php" class="nav-link">Strona główna</a></li>
-        <li><a href="../../reviews" class="nav-link">Opinie</a></li>
-        <li><a href="../../contact" class="nav-link">Kontakt</a></li>
-        <li><a href="../../about" class="nav-link">O nas</a></li>
+        <li><a href="../index.php" class="nav-link">Strona główna</a></li>
+        <li><a href="../reviews" class="nav-link">Opinie</a></li>
+        <li><a href="../contact" class="nav-link">Kontakt</a></li>
+        <li><a href="../about" class="nav-link">O nas</a></li>
         <li></li>
         <li>
           <?php
           if (!isset($_SESSION["email"])) {
-            echo '<a href="../../login" class="nav-link"><img src="../../src/cart.png" alt="Twój koszyk"></a>';
+            echo '<a href="../login" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
           } else
-            echo '<a href="../../cart" class="nav-link"><img src="../../src/cart.png" alt="Twój koszyk"></a>';
+            echo '<a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
           ?>
         </li>
         <li></li>
 
         <?php
         if (!isset($_SESSION["email"])) {
-          echo '<li><a class="nav-link" href="../../login">Logowanie </a></li>';
-          echo '<li><a class="nav-link" href="../../registration">Rejestracja</a></li>';
+          echo '<li><a class="nav-link" href="../login">Logowanie </a></li>';
+          echo '<li><a class="nav-link" href="../registration">Rejestracja</a></li>';
         } else
-          echo '<li><a class="nav-link" href="../../logout">Wyloguj</a></li>';
+          echo '<li><a class="nav-link" href="../logout">Wyloguj</a></li>';
         ?>
       </ul>
     </div>
@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
   </div>
 
-  <script src="../js/navbar.js"></script>
+  <script src="../functions/js/navbar.js"></script>
 </body>
 
 </html>
