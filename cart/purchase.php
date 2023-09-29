@@ -5,7 +5,7 @@ $sesID = $_SESSION['id'];
 require("../config.php");
 
 if (isset($_POST['buy'])) {
-    require_once '../functions/php/functions.php';
+    require_once '../functions/php/purchase_products.php';
 
     $productData = [];
     $totalCost = $_POST['total_cost'];
@@ -24,8 +24,17 @@ if (isset($_POST['buy'])) {
         }
     }
 
-    if (array_key_exists('order', $_POST))
-        purchase($link, $productData, $sesID);
+    if (array_key_exists('order', $_POST)) {
+        $result = purchase($link, $productData, $sesID);
+
+        if ($result)
+            echo "Zamówienie zostało pomyślnie przetworzone.";
+        else
+            echo "Wystąpił błąd podczas przetwarzania zamówienia: " . $result;
+    }
+} else {
+    header('Location: ../cart');
+    exit();
 }
 
 ?>
