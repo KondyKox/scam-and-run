@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $sesID = $_SESSION['id'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  require_once '../config.php';
+  require_once '../db_connect.php';
 
   $review = mysqli_real_escape_string($link, $_POST['review']);
   $rating = mysqli_real_escape_string($link, $_POST['rating']);

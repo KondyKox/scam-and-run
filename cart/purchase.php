@@ -2,7 +2,7 @@
 session_start();
 
 $sesID = $_SESSION['id'];
-require("../config.php");
+require("../db_connect.php");
 
 if (isset($_POST['buy'])) {
     require_once '../functions/php/purchase_products.php';

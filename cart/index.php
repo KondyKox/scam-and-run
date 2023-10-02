@@ -2,7 +2,7 @@
 session_start();
 
 $sesID = $_SESSION['id'];
-require("../config.php");
+require("../db_connect.php");
 
 // Adding to cart
 if (isset($_GET['id'])) {

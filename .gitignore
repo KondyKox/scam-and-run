@@ -1,4 +1,5 @@
-config.php
+.env
+db_connect.php
 composer.lock
 
 admin/

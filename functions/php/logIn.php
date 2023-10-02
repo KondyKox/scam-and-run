@@ -4,7 +4,7 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    require_once '../../config.php';
+    require_once '../../db_connect.php';
     require_once '../../functions/php/functions.php';
 
     if (emptyInputLogin($email, $password) !== false) {
