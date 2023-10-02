@@ -5,7 +5,7 @@ $sesID = $_SESSION['id'];
 require("../db_connect.php");
 
 if (isset($_POST['buy'])) {
-    require_once '../functions/php/purchase_products.php';
+    require_once '../public/functions/php/purchase_products.php';
 
     $productData = [];
     $totalCost = $_POST['total_cost'];
@@ -47,10 +47,10 @@ if (isset($_POST['buy'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scam and Run</title>
-    <link rel="icon" href="../src/logo.png">
+    <link rel="icon" href="../public/src/logo.png">
 
-    <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/purchase.css" />
+    <link rel="stylesheet" href="../public/styles/main.css" />
+    <link rel="stylesheet" href="../public/styles/purchase.css" />
 </head>
 
 <body>
@@ -63,7 +63,7 @@ if (isset($_POST['buy'])) {
                 <li><a href="../contact" class="nav-link">Kontakt</a></li>
                 <li><a href="../about" class="nav-link">O nas</a></li>
                 <li></li>
-                <li><a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a></li>
+                <li><a href="../cart" class="nav-link"><img src="../public/src/cart.png" alt="Twój koszyk"></a></li>
                 <li></li>
 
                 <?php
@@ -116,7 +116,7 @@ if (isset($_POST['buy'])) {
         </div>
     </div>
 
-    <script src="../functions/js/navbar.js"></script>
+    <script src="../public/functions/js/navbar.js"></script>
 </body>
 
 </html>

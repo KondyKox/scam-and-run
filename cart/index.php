@@ -57,12 +57,12 @@ if (isset($_GET['id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scam and Run</title>
-    <link rel="icon" href="../src/logo.png">
+    <link rel="icon" href="../public/src/logo.png">
 
-    <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/cart.css" />
+    <link rel="stylesheet" href="../public/styles/main.css" />
+    <link rel="stylesheet" href="../public/styles/cart.css" />
 
-    <script src="../functions/js/jquery-3.7.0.min.js"></script>
+    <script src="../public/functions/js/jquery-3.7.0.min.js"></script>
 </head>
 
 <body>
@@ -75,7 +75,7 @@ if (isset($_GET['id'])) {
                 <li><a href="../contact" class="nav-link">Kontakt</a></li>
                 <li><a href="../about" class="nav-link">O nas</a></li>
                 <li></li>
-                <li><a href="./cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a></li>
+                <li><a href="./cart" class="nav-link"><img src="../public/src/cart.png" alt="Twój koszyk"></a></li>
                 <li></li>
 
                 <?php
@@ -141,8 +141,8 @@ if (isset($_GET['id'])) {
 
     </div>
 
-    <script src="../functions/js/navbar.js"></script>
-    <script src="../functions/js/cart.js"></script>
+    <script src="../public/functions/js/navbar.js"></script>
+    <script src="../public/functions/js/cart.js"></script>
 </body>
 
 </html>

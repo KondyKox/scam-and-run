@@ -40,7 +40,7 @@ function userExists($link, $email)
 
     $stmt = mysqli_stmt_init($link);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header('location: ../../registration/index.php?error=stmtfailed');
+        header('location: ../../../registration/index.php?error=stmtfailed');
         exit();
     }
 
@@ -64,7 +64,7 @@ function createUser($link, $email, $password)
 
     $stmt = mysqli_stmt_init($link);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header('location: ../../registration/index.php?error=stmtfailed');
+        header('location: ../../../registration/index.php?error=stmtfailed');
         exit();
     }
 
@@ -74,7 +74,7 @@ function createUser($link, $email, $password)
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
-    header('location: ../../login/index.php?error=none');
+    header('location: ../../../login/index.php?error=none');
     exit();
 }
 
@@ -95,7 +95,7 @@ function loginUser($link, $email, $password)
     $userExists = userExists($link, $email);
 
     if (!$userExists) {
-        header("location: ../../login/index.php?error=wrongemail");
+        header("location: ../../../login/index.php?error=wrongemail");
         exit();
     }
 
@@ -104,7 +104,7 @@ function loginUser($link, $email, $password)
     $checkPassword = password_verify($password, $passwordHashed);
 
     if (!$checkPassword) {
-        header("location: ../../login/index.php?error=wrongpassword");
+        header("location: ../../../login/index.php?error=wrongpassword");
         exit();
     } else if ($checkPassword) {
         session_start();
@@ -112,7 +112,7 @@ function loginUser($link, $email, $password)
         $_SESSION['id'] = $userExists['id'];
         $_SESSION['email'] = $userExists['email'];
 
-        header("location: ../../index.php");
+        header("location: ../../../index.php");
         exit();
     }
 }

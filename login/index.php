@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scam and Run</title>
-    <link rel="icon" href="../src/logo.png">
+    <link rel="icon" href="../public/src/logo.png">
 
-    <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="stylesheet" href="../public/styles/main.css" />
+    <link rel="stylesheet" href="../public/styles/login.css" />
 </head>
 
 <body>
@@ -23,9 +23,9 @@
                 <li>
                     <?php
                     if (!isset($_SESSION["email"])) {
-                        echo '<a href="./index.php" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
+                        echo '<a href="./index.php" class="nav-link"><img src="../public/src/cart.png" alt="Twój koszyk"></a>';
                     } else
-                        echo '<a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
+                        echo '<a href="../cart" class="nav-link"><img src="../public/src/cart.png" alt="Twój koszyk"></a>';
                     ?>
                 </li>
                 <li></li>
@@ -49,7 +49,7 @@
 
     <div class="extra">
         <div class="login" id="login">
-            <form action="../functions/php/login.php" method="post">
+            <form action="../public/functions/php/login.php" method="post">
                 <h2>Logowanie</h2>
                 <div class="txtField">
                     <input type="text" name="email" required class="form-control">
@@ -82,7 +82,7 @@
 
     </div>
 
-    <script src="../functions/js/navbar.js"></script>
+    <script src="../public/functions/js/navbar.js"></script>
 </body>
 
 </html>

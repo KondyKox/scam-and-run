@@ -13,10 +13,10 @@ require("../db_connect.php");
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scam and Run</title>
-  <link rel="icon" href="../src/logo.png">
+  <link rel="icon" href="../public/src/logo.png">
 
-  <link rel="stylesheet" href="../styles/main.css" />
-  <link rel="stylesheet" href="../styles/products.css" />
+  <link rel="stylesheet" href="../public/styles/main.css" />
+  <link rel="stylesheet" href="../public/styles/products.css" />
 
 </head>
 
@@ -33,9 +33,9 @@ require("../db_connect.php");
         <li>
           <?php
           if (!isset($_SESSION["email"])) {
-            echo '<a href="../login" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
+            echo '<a href="../login" class="nav-link"><img src="../public/src/cart.png" alt="Twój koszyk"></a>';
           } else
-            echo '<a href="../cart" class="nav-link"><img src="../src/cart.png" alt="Twój koszyk"></a>';
+            echo '<a href="../cart" class="nav-link"><img src="../public/src/cart.png" alt="Twój koszyk"></a>';
           ?>
         </li>
         <li></li>
@@ -79,7 +79,7 @@ require("../db_connect.php");
     ?>
   </div>
 
-  <script src="../functions/js/navbar.js"></script>
+  <script src="../public/functions/js/navbar.js"></script>
 </body>
 
 </html>

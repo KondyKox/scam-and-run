@@ -4,7 +4,7 @@ $(".delete").click(function () {
 
   $.ajax({
     type: "POST",
-    url: "../functions/php/remove_from_cart.php",
+    url: "../public/functions/php/remove_from_cart.php",
     data: { productID: productId },
     success: function (response) {
       if (response.success) {
@@ -34,7 +34,7 @@ $(".quantity").change(function () {
 function updateProduct(productId, newQuantity) {
   $.ajax({
     type: "POST",
-    url: "../functions/php/update_product.php",
+    url: "../public/functions/php/update_product.php",
     data: { productID: productId, newQuantity: newQuantity },
     success: function (response) {
       if (response.success) {
