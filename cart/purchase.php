@@ -5,7 +5,7 @@ $sesID = $_SESSION['id'];
 require("../db_connect.php");
 
 if (isset($_POST['buy'])) {
-    require_once '../public/functions/php/purchase_products.php';
+    require_once '../public/functions/php/functions.php';
 
     $productData = [];
     $totalCost = $_POST['total_cost'];
