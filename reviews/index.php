@@ -75,7 +75,7 @@ require('../db_connect.php');
         echo "<div class='rating'>";
 
         for ($i = 1; $i < $row['rating']; $i++) {
-          echo "<img src='../src/star.png'>";
+          echo "<img src='../public/src/star.png'>";
         }
 
         echo "</div>";
