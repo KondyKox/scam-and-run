@@ -96,7 +96,7 @@ if (isset($_GET['id'])) {
     </nav>
 
     <div class="container">
-        <form action="purchase.php" method="post">
+        <form action="order.php" method="post">
             <?php
             $getProducts = "SELECT products.id, products.product_name, products.photo, cart.quantity, cart.total_price
                             FROM cart INNER JOIN products ON cart.product_id = products.id WHERE user_id = ?;";

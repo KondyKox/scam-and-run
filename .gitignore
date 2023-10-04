@@ -1,2 +1,5 @@
 .env
 db_connect.php
+composer.lock
+
+vendor/

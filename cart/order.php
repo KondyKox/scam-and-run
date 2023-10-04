@@ -5,7 +5,7 @@ $sesID = $_SESSION['id'];
 require("../db_connect.php");
 
 if (isset($_POST['buy'])) {
-    require_once '../public/functions/php/functions.php';
+    require_once '../public/functions/php/purchase.php';
 
     $productData = [];
     $totalCost = $_POST['total_cost'];
@@ -24,14 +24,14 @@ if (isset($_POST['buy'])) {
         }
     }
 
-    if (array_key_exists('order', $_POST)) {
-        $result = purchase($link, $productData, $sesID);
+    if (isset($_POST['order'])) {
+        $address = sanitizeInput($_POST['address']);
+        $zip_code = sanitizeInput($_POST['zip-code']);
+        $place = sanitizeInput($_POST['place']);
 
-        if ($result)
-            echo "Zamówienie zostało pomyślnie przetworzone.";
-        else
-            echo "Wystąpił błąd podczas przetwarzania zamówienia: " . $result;
+        redirectToPayPal($link, $productData, $sesID, $address, $zip_code, $place);
     }
+
 } else {
     header('Location: ../cart');
     exit();
