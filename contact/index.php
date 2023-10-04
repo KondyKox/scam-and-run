@@ -31,7 +31,7 @@ require("../db_connect.php");
         <li></li>
         <li>
           <?php
-          if (!isset($_SESSION["username"])) {
+          if (!isset($_SESSION["email"])) {
             echo '<a href="../login" class="nav-link"><img src="../public/src/cart.png" alt="Twój koszyk"></a>';
           } else
             echo '<a href="../cart" class="nav-link"><img src="../public/src/cart.png" alt="Twój koszyk"></a>';
@@ -40,7 +40,7 @@ require("../db_connect.php");
         <li></li>
 
         <?php
-        if (!isset($_SESSION["username"])) {
+        if (!isset($_SESSION["email"])) {
           echo '<li><a class="nav-link" href="../login">Logowanie </a></li>';
           echo '<li><a class="nav-link" href="../registration">Rejestracja</a></li>';
         } else
