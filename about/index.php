@@ -59,7 +59,7 @@ require("../db_connect.php");
 
   <div class="container">
     <div class="ourIMG">
-        <img src="../src/millionaires.png" alt="Twórcy tego dzieła">
+        <img src="../public/src/millionaires.png" alt="Twórcy tego dzieła">
     </div>
     <div class="text">
         <h1>Młodzi milionerzy</h1>

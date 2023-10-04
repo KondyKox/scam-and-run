@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-panel {
+    padding: 5em;
+    margin: 3em;
+    border: 1px solid var(--main-color);
+    border-radius: 10px;
+}
+
+.admin-panel h1 {
+    font-size: var(--title-size);
+    font-weight: 800;
+    color: var(--main-color);
+}
+
+.admin__input {
+    font-size: var(--text-size);
+}
+
+.btn {
+    background: none;
+    border: 1px solid var(--main-color);
+    border-radius: 10px;
+    padding: .75em;
+    margin: 1em;
+    color: var(--text-color);
+    font-size: var(--text-size);
+}
+
+.submit {
+    transition: all .3s ease-in-out;
+}
+
+.submit:hover {
+    cursor: pointer;
+    scale: 1.2;
+    background-color: var(--main-color);
+}
+
+@media screen and (max-width: 768px) {
+    .admin-panel {
+        margin: 1em;
+        padding: .6em;
+    }
+
+    .admin-panel h1 {
+        font-size: var(--text-size);
+    }
+
+    .admin__input {
+        font-size: var(--label-size);
+    }
+
+    .btn {
+        font-size: var(--label-size);
+        padding: .5em;
+        margin: .75em;
+    }
+}
