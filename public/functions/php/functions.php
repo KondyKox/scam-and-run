@@ -112,11 +112,6 @@ function loginUser($link, $email, $password)
         $_SESSION['id'] = $userExists['id'];
         $_SESSION['email'] = $userExists['email'];
 
-        if ($_SESSION['id'] === 1) {
-            header("Location: ../../../admin");
-            exit();
-        }
-
         header("location: ../../../index.php");
         exit();
     }

@@ -27,7 +27,8 @@ require("db_connect.php");
     <div class="nav-container">
       <ul class="nav-links">
         <?php
-        echo '<li><a href="./admin" class="nav-link">Panel admina</a></li>';
+        if ($sesID === 1)
+          echo '<li><a href="./admin" class="nav-link">Panel admina</a></li>';
         ?>
         <li><a href="./index.php" class="nav-link">Strona główna</a></li>
         <li><a href="./reviews" class="nav-link">Opinie</a></li>
